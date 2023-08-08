@@ -19,6 +19,6 @@ public class EndText : MonoBehaviour
 
     public void ReGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("jjyuppit_P1");
     }
 }
