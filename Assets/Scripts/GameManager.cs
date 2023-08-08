@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject secondCard;
     public TextMeshProUGUI timeText;
     public GameObject endText;
-    public GameObject nameText;
-    public GameObject failedMsg;
+    public GameObject notificationText;
     public GameObject card;
+
     float time = 0f;
 
     private void Awake()
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
             .Find("Front")
             .GetComponent<SpriteRenderer>()
             .sprite.name;
+
         string secondCardImage = secondCard.transform
             .Find("Front")
             .GetComponent<SpriteRenderer>()
@@ -77,23 +78,23 @@ public class GameManager : MonoBehaviour
             {
                 if (firstCardImage == "ourpic0" || firstCardImage == "ourpic1")
                 {
-                    nameText.SetActive(true);
-                    nameText.GetComponent<TextMeshProUGUI>().text = "배인호";
+                    notificationText.SetActive(true);
+                    notificationText.GetComponent<TextMeshProUGUI>().text = "배인호";
                 }
                 else if (firstCardImage == "ourpic2" || firstCardImage == "ourpic3")
                 {
-                    nameText.SetActive(true);
-                    nameText.GetComponent<TextMeshProUGUI>().text = "이경민";
+                    notificationText.SetActive(true);
+                    notificationText.GetComponent<TextMeshProUGUI>().text = "이경민";
                 }
                 else if (firstCardImage == "ourpic4" || firstCardImage == "ourpic5")
                 {
-                    nameText.SetActive(true);
-                    nameText.GetComponent<TextMeshProUGUI>().text = "장성민";
+                    notificationText.SetActive(true);
+                    notificationText.GetComponent<TextMeshProUGUI>().text = "장성민";
                 }
                 else if (firstCardImage == "ourpic6" || firstCardImage == "ourpic7")
                 {
-                    nameText.SetActive(true);
-                    nameText.GetComponent<TextMeshProUGUI>().text = "염종인";
+                    notificationText.SetActive(true);
+                    notificationText.GetComponent<TextMeshProUGUI>().text = "염종인";
                 }
             }
         }
@@ -101,8 +102,8 @@ public class GameManager : MonoBehaviour
         {
             firstCard.GetComponent<Card>().CloseCard();
             secondCard.GetComponent<Card>().CloseCard();
-            nameText.SetActive(true);
-            nameText.GetComponent<TextMeshProUGUI>().text = "실패!";
+            notificationText.SetActive(true);
+            notificationText.GetComponent<TextMeshProUGUI>().text = "실패!";
         }
 
         firstCard = null;
