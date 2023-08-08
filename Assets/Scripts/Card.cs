@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public Animator cardAnim;
+    public int cardnum;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,7 @@ public class Card : MonoBehaviour
 
     public void CloseCard()
     {
-        Invoke("CloseCardInvoke", 1.0f);
+        Invoke("CloseCardInvoke", 0.5f);
     }
 
     private void CloseCardInvoke()

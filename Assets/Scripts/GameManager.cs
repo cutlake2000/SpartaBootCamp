@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
             float y = (i / 4) * 1.4f - 3.0f;
 
             newCard.transform.position = new Vector3(x, y, 0);
-
-            string imageName = "rtan" + cardNum[i].ToString();
-            newCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Images/rtan/" + imageName);
+            newCard.GetComponent<Card>().cardnum=cardNum[i];
+            string imageName = "ourpic" + cardNum[i].ToString();
+            newCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Images/ourPictures/" + imageName);
         }
     }
 
@@ -51,34 +51,46 @@ public class GameManager : MonoBehaviour
     }
 
     public void isMatched()
-    {
-        string firstCardImage = firstCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name;
-        string secondCardImage = secondCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name;
+{
+string firstCardImage = firstCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name;
+string secondCardImage = secondCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name;
 
-        if(firstCardImage == secondCardImage)
-        {
-            firstCard.GetComponent<Card>().DestroyCard();
-            secondCard.GetComponent<Card>().DestroyCard();
+if(firstCardImage == secondCardImage)
+{
+firstCard.GetComponent<Card>().DestroyCard();
+secondCard.GetComponent<Card>().DestroyCard();
 
-            int cardsLeft = GameObject.Find("Cards").transform.childCount;
-            if(cardsLeft == 2)
-            {
-                Invoke("GameEnd", 1f);
-            }
-            else
-            {
-                //if()
-            }
-        }
-        else
-        {
-            firstCard.GetComponent<Card>().CloseCard();
-            secondCard.GetComponent<Card>().CloseCard();
-        }
+int cardsLeft = GameObject.Find("Cards").transform.childCount;
+if(cardsLeft == 2)
+{
+Invoke("GameEnd", 1f);
+}
+else
+{
+if (firstCardImage == "ourpic0")
+{
+nameText.SetActive(true);
+nameText.GetComponent<TextMeshProUGUI>().text = "인호";
+}
+else if (firstCardImage == "ourpic2")
+{
+nameText.SetActive(true);
+nameText.GetComponent<TextMeshProUGUI>().text = "경민";
+}
+//이런 식으로 쭉
+}
+}
+else
+{
+firstCard.GetComponent<Card>().CloseCard();
+secondCard.GetComponent<Card>().CloseCard();
+nameText.SetActive(true);
+nameText.GetComponent<TextMeshProUGUI>().text = "실패";
+}
 
-        firstCard = null;
-        secondCard = null;
-    }
+firstCard = null;
+secondCard = null;
+}
 
     private void GameEnd()
     {
