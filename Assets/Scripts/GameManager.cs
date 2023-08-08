@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject secondCard;
     public TextMeshProUGUI timeText;
     public GameObject endText;
+    public GameObject nameText;
+    public GameObject failedMsg;
     public GameObject card;
     float time = 0f;
 
@@ -62,6 +64,10 @@ public class GameManager : MonoBehaviour
             if(cardsLeft == 2)
             {
                 Invoke("GameEnd", 1f);
+            }
+            else
+            {
+                //if()
             }
         }
         else
