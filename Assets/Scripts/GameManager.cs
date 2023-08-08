@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         int[] cardNum = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
         cardNum = cardNum.OrderBy(item => Random.Range(-1.0f, 1.0f)).ToArray();
 
-        for (int i=0; i<16; i++)
+        for (int i = 0; i < 16; i++)
         {
             GameObject newCard = Instantiate(card);
             newCard.name = card.name + " " + i.ToString();
@@ -38,9 +38,10 @@ public class GameManager : MonoBehaviour
             float y = (i / 4) * 1.4f - 3.0f;
 
             newCard.transform.position = new Vector3(x, y, 0);
-            newCard.GetComponent<Card>().cardnum=cardNum[i];
+            newCard.GetComponent<Card>().cardnum = cardNum[i];
             string imageName = "ourpic" + cardNum[i].ToString();
-            newCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Images/ourPictures/" + imageName);
+            newCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite =
+                Resources.Load<Sprite>("Images/ourPictures/" + imageName);
         }
     }
 
@@ -51,46 +52,62 @@ public class GameManager : MonoBehaviour
     }
 
     public void isMatched()
-{
-string firstCardImage = firstCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name;
-string secondCardImage = secondCard.transform.Find("Front").GetComponent<SpriteRenderer>().sprite.name;
+    {
+        string firstCardImage = firstCard.transform
+            .Find("Front")
+            .GetComponent<SpriteRenderer>()
+            .sprite.name;
+        string secondCardImage = secondCard.transform
+            .Find("Front")
+            .GetComponent<SpriteRenderer>()
+            .sprite.name;
 
-if(firstCardImage == secondCardImage)
-{
-firstCard.GetComponent<Card>().DestroyCard();
-secondCard.GetComponent<Card>().DestroyCard();
+        if (firstCardImage == secondCardImage)
+        {
+            firstCard.GetComponent<Card>().DestroyCard();
+            secondCard.GetComponent<Card>().DestroyCard();
 
-int cardsLeft = GameObject.Find("Cards").transform.childCount;
-if(cardsLeft == 2)
-{
-Invoke("GameEnd", 1f);
-}
-else
-{
-if (firstCardImage == "ourpic0")
-{
-nameText.SetActive(true);
-nameText.GetComponent<TextMeshProUGUI>().text = "¿Œ»£";
-}
-else if (firstCardImage == "ourpic2")
-{
-nameText.SetActive(true);
-nameText.GetComponent<TextMeshProUGUI>().text = "∞ÊπŒ";
-}
-//¿Ã∑± Ωƒ¿∏∑Œ ¬ﬂ
-}
-}
-else
-{
-firstCard.GetComponent<Card>().CloseCard();
-secondCard.GetComponent<Card>().CloseCard();
-nameText.SetActive(true);
-nameText.GetComponent<TextMeshProUGUI>().text = "Ω«∆–";
-}
+            int cardsLeft = GameObject.Find("Cards").transform.childCount;
 
-firstCard = null;
-secondCard = null;
-}
+            if (cardsLeft == 2)
+            {
+                Invoke("GameEnd", 1f);
+            }
+            else
+            {
+                if (firstCardImage == "ourpic0" || firstCardImage == "ourpic1")
+                {
+                    nameText.SetActive(true);
+                    nameText.GetComponent<TextMeshProUGUI>().text = "Î∞∞Ïù∏Ìò∏";
+                }
+                else if (firstCardImage == "ourpic2" || firstCardImage == "ourpic3")
+                {
+                    nameText.SetActive(true);
+                    nameText.GetComponent<TextMeshProUGUI>().text = "Ïù¥Í≤ΩÎØº";
+                }
+                else if (firstCardImage == "ourpic4" || firstCardImage == "ourpic5")
+                {
+                    nameText.SetActive(true);
+                    nameText.GetComponent<TextMeshProUGUI>().text = "Ïû•ÏÑ±ÎØº";
+                }
+                else if (firstCardImage == "ourpic6" || firstCardImage == "ourpic7")
+                {
+                    nameText.SetActive(true);
+                    nameText.GetComponent<TextMeshProUGUI>().text = "ÏóºÏ¢ÖÏù∏";
+                }
+            }
+        }
+        else
+        {
+            firstCard.GetComponent<Card>().CloseCard();
+            secondCard.GetComponent<Card>().CloseCard();
+            nameText.SetActive(true);
+            nameText.GetComponent<TextMeshProUGUI>().text = "Ïã§Ìå®!";
+        }
+
+        firstCard = null;
+        secondCard = null;
+    }
 
     private void GameEnd()
     {
