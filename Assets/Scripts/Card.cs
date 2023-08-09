@@ -13,6 +13,7 @@ public class Card : MonoBehaviour
         cardAnim.SetBool("isOpen", true);
         transform.Find("Front").gameObject.SetActive(true);
         transform.Find("Back").gameObject.SetActive(false);
+       
 
         if (GameManager.gameManager.firstCard == null)
         {
@@ -47,5 +48,7 @@ public class Card : MonoBehaviour
         transform.Find("Back").gameObject.SetActive(true);
         transform.Find("Front").gameObject.SetActive(false);
         transform.Find("Back").gameObject.GetComponent<SpriteRenderer>().color = new Color(150f/255f, 150f / 255f, 150f / 255f,1);
+        Debug.Log("upload confirm");
+
     }
 }
