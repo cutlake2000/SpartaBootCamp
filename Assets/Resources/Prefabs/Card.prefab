@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardAnim: {fileID: 658857212046947604}
+  cardnum: 0
 --- !u!114 &-5334293063619110974
 MonoBehaviour:
   m_ObjectHideFlags: 0

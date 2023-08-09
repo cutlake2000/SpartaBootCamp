@@ -11,11 +11,14 @@ public class GameManager : MonoBehaviour
     public GameObject firstCard;
     public GameObject secondCard;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI matchTryCountText; // 카드 뒤집은 횟수를 Canvas에 보여줄 TMPro
     public GameObject endText;
     public GameObject notificationText;
     public GameObject card;
 
     float time = 30f;
+
+    public int matchTryCount; // 카드 뒤집은 횟수를 저장할 변수
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class GameManager : MonoBehaviour
     {
         int[] cardNum = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
         cardNum = cardNum.OrderBy(item => Random.Range(-1.0f, 1.0f)).ToArray();
+
+        matchTryCount = 0; // matchCount 초기화
 
         for (int i = 0; i < 16; i++)
         {
@@ -49,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         time -= Time.deltaTime;
         timeText.text = time.ToString("N2");
+        matchTryCountText.text = "Count : " + matchTryCount.ToString();
 
         if (time <= 5)
         {
@@ -63,6 +69,9 @@ public class GameManager : MonoBehaviour
 
     public void isMatched()
     {
+        // 카드가 매칭될 때마다 matchCount++;
+        matchTryCount++;
+
         string firstCardImage = firstCard.transform
             .Find("Front")
             .GetComponent<SpriteRenderer>()
