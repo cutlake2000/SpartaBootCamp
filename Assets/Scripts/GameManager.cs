@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject notificationText;
     public GameObject card;
 
-    float time = 0f;
+    float time = 30f;
 
     public int matchTryCount; // 카드 뒤집은 횟수를 저장할 변수
 
@@ -52,9 +52,19 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
+        time -= Time.deltaTime;
         timeText.text = time.ToString("N2");
         matchTryCountText.text = "Count : " + matchTryCount.ToString();
+
+        if (time <= 5)
+        {
+            timeText.color = Color.red;
+        }
+
+        if (time <= 1)
+        {
+            Invoke("GameEnd", 1f);
+        }
     }
 
     public void isMatched()
@@ -121,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     private void GameEnd()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 0.0f;
         endText.SetActive(true);
     }
 }
