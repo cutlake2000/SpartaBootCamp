@@ -7,8 +7,13 @@ public class Card : MonoBehaviour
     public Animator cardAnim;
     public int cardnum;
 
+    public AudioSource cardSource;
+    public AudioClip flipSound;
+
     public void OpenCard()
     {
+        cardSource.PlayOneShot(flipSound);
+
         cardAnim.SetBool("isOpen", true);
         transform.Find("Front").gameObject.SetActive(true);
         transform.Find("Back").gameObject.SetActive(false);
