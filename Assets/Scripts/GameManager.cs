@@ -38,10 +38,46 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // 카드 덱 초기화
+        InitiateCard();
+
+        // 변수 초기화
+        InitiateValue();
+    }
+
+    void Update()
+    {
+        time -= Time.deltaTime;
+
+        // InGameUI Value 조정
+        InGameUI();
+
+        // 첫 번째 카드를 뒤집었다면 5초 후에 다시 뒤집기
+        ReturnFlipCard();
+
+        // 잔여 시간이 0초 아래라면 GameEnd() 메소드 실행
+        if (time <= 0)
+        {
+            GameOver();
+            Time.timeScale = 0.0f;
+        }
+    }
+
+    void InGameUI()
+    {
+        timeText.text = time.ToString("N2");
+        matchTryCountText.text = "Count : " + matchTryCount.ToString();
+
+        if (time <= 5)
+        {
+            timeText.color = Color.red;
+        }
+    }
+
+    void InitiateCard()
+    {
         int[] cardNum = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
         cardNum = cardNum.OrderBy(item => Random.Range(-1.0f, 1.0f)).ToArray();
-        score = 0; // 점수 초기화
-        matchTryCount = 0; // matchCount 초기화
 
         for (int i = 0; i < 16; i++)
         {
@@ -60,33 +96,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void InitiateValue()
     {
-        time -= Time.deltaTime;
-        if (firstCard != null)
+        score = 0; // 점수 초기화
+        matchTryCount = 0; // matchCount 초기화
+    }
+
+    void ReturnFlipCard()
+    {
+        if (firstCard != null && secondCard == null)
         {
             timeLimit += Time.deltaTime;
-        }
 
-        timeText.text = time.ToString("N2");
-        matchTryCountText.text = "Count : " + matchTryCount.ToString();
-
-        if (time <= 5)
-        {
-            timeText.color = Color.red;
-        }
-
-        if (time <= 0)
-        {
-            GameEnd();
-            Time.timeScale = 0.0f;
-        }
-
-        if (timeLimit > 5.0f && firstCard != null && secondCard == null) // 5초 후 카드 뒤집기
-        {
-            firstCard.GetComponent<Card>().CloseCardInvoke();
-            firstCard = null;
-            timeLimit = 0.0f;
+            if (timeLimit > 5.0f)
+            {
+                firstCard.GetComponent<Card>().CloseCardInvoke();
+                firstCard = null;
+                timeLimit = 0.0f;
+            }
         }
     }
 
@@ -105,7 +132,7 @@ public class GameManager : MonoBehaviour
             .GetComponent<SpriteRenderer>()
             .sprite.name;
 
-        if (firstCardImage == secondCardImage)
+        if (firstCardImage == secondCardImage) // 같은 카드라면
         {
             managerSource.PlayOneShot(checkSound);
 
@@ -114,15 +141,14 @@ public class GameManager : MonoBehaviour
 
             int cardsLeft = GameObject.Find("Cards").transform.childCount;
 
+            score += 10; // score에 10씩 더하기
+
             if (cardsLeft == 2)
             {
                 Invoke("GameEnd", 1f);
             }
             else
             {
-                // 같은 카드라면
-                score += 10; // score에 10씩 더하기
-
                 if (firstCardImage == "ourpic0" || firstCardImage == "ourpic1")
                 {
                     notificationText.SetActive(true);
@@ -145,7 +171,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else
+        else // 다른 카드라면
         {
             // 같은 카드가 아니라면
             time--; // 잔여 시간에서 1초 빼기
@@ -161,7 +187,7 @@ public class GameManager : MonoBehaviour
         secondCard = null;
     }
 
-    private void GameEnd()
+    private void GameOver()
     {
         Time.timeScale = 0.0f;
 
