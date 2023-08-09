@@ -12,14 +12,21 @@ public class GameManager : MonoBehaviour
     public GameObject secondCard;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI matchTryCountText; // 카드 뒤집은 횟수를 Canvas에 보여줄 TMPro
-    public GameObject endText;
-    public GameObject notificationText;
+    public GameObject inGamePanel; // 게임 플레이 화면
+    public GameObject notificationText; // 카드 정보 혹은 실패 문구 출력
+
+    public GameObject resultPanel; // 게임 결과창
+    public TextMeshProUGUI remainTimeText; // 남은 시간
+    public TextMeshProUGUI tryCountText; // 카드 뒤집기 시도 횟수
+    public TextMeshProUGUI scoreText; // 최종 점수
+
     public GameObject card;
     public AudioSource managerSource;
     public AudioClip checkSound;
-    private float timeLimit = 0.0f;
 
+    private float timeLimit = 0.0f;
     float time = 30f;
+    int score; // 게임 점수
 
     public int matchTryCount; // 카드 뒤집은 횟수를 저장할 변수
 
@@ -33,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         int[] cardNum = { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7 };
         cardNum = cardNum.OrderBy(item => Random.Range(-1.0f, 1.0f)).ToArray();
-
+        score = 0; // 점수 초기화
         matchTryCount = 0; // matchCount 초기화
 
         for (int i = 0; i < 16; i++)
@@ -60,7 +67,7 @@ public class GameManager : MonoBehaviour
         {
             timeLimit += Time.deltaTime;
         }
-        
+
         timeText.text = time.ToString("N2");
         matchTryCountText.text = "Count : " + matchTryCount.ToString();
 
@@ -69,11 +76,13 @@ public class GameManager : MonoBehaviour
             timeText.color = Color.red;
         }
 
-        if (time <= 1)
+        if (time <= 0)
         {
-            Invoke("GameEnd", 1f);
+            GameEnd();
+            Time.timeScale = 0.0f;
         }
-        if (timeLimit >5.0f && firstCard != null && secondCard == null) //5초 후 카드 뒤집기
+
+        if (timeLimit > 5.0f && firstCard != null && secondCard == null) // 5초 후 카드 뒤집기
         {
             firstCard.GetComponent<Card>().CloseCardInvoke();
             firstCard = null;
@@ -111,6 +120,9 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                // 같은 카드라면
+                score += 10; // score에 10씩 더하기
+
                 if (firstCardImage == "ourpic0" || firstCardImage == "ourpic1")
                 {
                     notificationText.SetActive(true);
@@ -135,7 +147,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            time--; // 틀렸다면 잔여 시간에서 1초 빼기
+            // 같은 카드가 아니라면
+            time--; // 잔여 시간에서 1초 빼기
+            score--; // score에서 1씩 빼기
 
             firstCard.GetComponent<Card>().CloseCard();
             secondCard.GetComponent<Card>().CloseCard();
@@ -150,6 +164,11 @@ public class GameManager : MonoBehaviour
     private void GameEnd()
     {
         Time.timeScale = 0.0f;
-        endText.SetActive(true);
+
+        inGamePanel.SetActive(false);
+        resultPanel.SetActive(true);
+        remainTimeText.text = time.ToString("N2");
+        tryCountText.text = matchTryCount.ToString();
+        scoreText.text = score.ToString();
     }
 }
