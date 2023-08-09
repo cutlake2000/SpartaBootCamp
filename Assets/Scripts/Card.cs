@@ -6,14 +6,12 @@ public class Card : MonoBehaviour
 {
     public Animator cardAnim;
     public int cardnum;
- 
 
     public void OpenCard()
     {
         cardAnim.SetBool("isOpen", true);
         transform.Find("Front").gameObject.SetActive(true);
         transform.Find("Back").gameObject.SetActive(false);
-       
 
         if (GameManager.gameManager.firstCard == null)
         {
@@ -24,7 +22,6 @@ public class Card : MonoBehaviour
             GameManager.gameManager.secondCard = gameObject;
             GameManager.gameManager.isMatched();
         }
-        
     }
 
     public void DestroyCard()
@@ -47,8 +44,11 @@ public class Card : MonoBehaviour
         cardAnim.SetBool("isOpen", false);
         transform.Find("Back").gameObject.SetActive(true);
         transform.Find("Front").gameObject.SetActive(false);
-        transform.Find("Back").gameObject.GetComponent<SpriteRenderer>().color = new Color(150f/255f, 150f / 255f, 150f / 255f,1);
-        Debug.Log("upload confirm");
-
+        transform.Find("Back").gameObject.GetComponent<SpriteRenderer>().color = new Color(
+            150f / 255f,
+            150f / 255f,
+            150f / 255f,
+            1
+        );
     }
 }
