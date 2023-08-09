@@ -5,14 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EndText : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start() { }
-
-    // Update is called once per frame
-    void Update() { }
-
     public void ReGame()
     {
-        SceneManager.LoadScene("jjyuppit_P1");
+        SceneManager.LoadScene("MainStage");
     }
 }

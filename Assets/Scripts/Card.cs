@@ -7,12 +7,6 @@ public class Card : MonoBehaviour
     public Animator cardAnim;
     public int cardnum;
 
-    // Start is called before the first frame update
-    void Start() { }
-
-    // Update is called once per frame
-    void Update() { }
-
     public void OpenCard()
     {
         cardAnim.SetBool("isOpen", true);
