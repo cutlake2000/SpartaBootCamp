@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject card;
     public AudioSource managerSource;
     public AudioClip checkSound;
+    private float timeLimit = 0.0f;
 
     float time = 30f;
 
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
+        if (firstCard != null)
+        {
+            timeLimit += Time.deltaTime;
+        }
+        
         timeText.text = time.ToString("N2");
         matchTryCountText.text = "Count : " + matchTryCount.ToString();
 
@@ -66,6 +72,12 @@ public class GameManager : MonoBehaviour
         if (time <= 1)
         {
             Invoke("GameEnd", 1f);
+        }
+        if (timeLimit >5.0f && firstCard != null && secondCard == null) //5초 후 카드 뒤집기
+        {
+            firstCard.GetComponent<Card>().CloseCardInvoke();
+            firstCard = null;
+            timeLimit = 0.0f;
         }
     }
 
