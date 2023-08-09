@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 446191309}
   - component: {fileID: 446191311}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: NotificationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -920,6 +920,7 @@ MonoBehaviour:
   endText: {fileID: 1646006511}
   notificationText: {fileID: 446191307}
   card: {fileID: 2517146412805434204, guid: 72d396142eb1127418c2c58fd19bd22e, type: 3}
+  matchCount: 0
 --- !u!1 &2136982519
 GameObject:
   m_ObjectHideFlags: 0
