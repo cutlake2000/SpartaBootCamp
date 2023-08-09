@@ -152,4 +152,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Fonts
+Assets/Fonts
+
 # End of https://www.toptal.com/developers/gitignore/api/unity,windows,macos,visualstudiocode
