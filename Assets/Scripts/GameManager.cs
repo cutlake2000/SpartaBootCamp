@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            time--; // 틀렸다면 잔여 시간에서 1초 빼기
+
             firstCard.GetComponent<Card>().CloseCard();
             secondCard.GetComponent<Card>().CloseCard();
             notificationText.SetActive(true);
