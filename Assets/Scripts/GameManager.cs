@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     float time = 0f;
 
+    public int matchCount;
+
     private void Awake()
     {
         Time.timeScale = 1.0f;
