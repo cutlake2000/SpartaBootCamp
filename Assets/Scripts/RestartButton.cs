@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndText : MonoBehaviour
+public class RestartButton : MonoBehaviour
 {
-    public void ReGame()
+    public void RestartGame()
     {
         SceneManager.LoadScene("MainStage");
     }
