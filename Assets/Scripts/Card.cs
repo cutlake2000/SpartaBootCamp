@@ -44,7 +44,7 @@ public class Card : MonoBehaviour
         Invoke("CloseCardInvoke", 0.5f);
     }
 
-    private void CloseCardInvoke()
+    public void CloseCardInvoke() // public으로 변경함
     {
         cardAnim.SetBool("isOpen", false);
         transform.Find("Back").gameObject.SetActive(true);
