@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject endText;
     public GameObject notificationText;
     public GameObject card;
+    public AudioSource managerSource;
+    public AudioClip checkSound;
 
     float time = 30f;
 
@@ -84,6 +86,8 @@ public class GameManager : MonoBehaviour
 
         if (firstCardImage == secondCardImage)
         {
+            managerSource.PlayOneShot(checkSound);
+
             firstCard.GetComponent<Card>().DestroyCard();
             secondCard.GetComponent<Card>().DestroyCard();
 
