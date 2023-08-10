@@ -111,9 +111,11 @@ public class GameManager : MonoBehaviour
         {
             timeLimit += Time.deltaTime;
 
-            if (timeLimit > 5.0f)
+            if (timeLimit > 4.5f)
             {
-                firstCard.GetComponent<Card>().CloseCardInvoke();
+                firstCard.GetComponent<Card>().CloseCard();
+                firstCard.GetComponent<Card>().CardSet();
+
                 firstCard = null;
                 timeLimit = 0.0f;
             }
