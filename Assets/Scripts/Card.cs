@@ -17,7 +17,6 @@ public class Card : MonoBehaviour
     {
         cardSource.PlayOneShot(flipSound);
 
-        //cardAnim.SetBool("isOpen", true);
         cardAnim.SetBool("isReverse", true);
         transform.Find("Front").gameObject.SetActive(true);
         transform.Find("Back").gameObject.SetActive(false);
@@ -52,11 +51,6 @@ public class Card : MonoBehaviour
 
     public void CloseCardInvoke()
     {
-        //cardAnim.SetBool("isOpen", false);
-        
-
-        //transform.Find("Back").gameObject.SetActive(true);
-        //transform.Find("Front").gameObject.SetActive(false);
         transform.Find("Back").gameObject.GetComponent<SpriteRenderer>().color = new Color(
             150f / 255f,
             150f / 255f,
