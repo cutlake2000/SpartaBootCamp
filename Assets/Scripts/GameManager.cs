@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI remainTimeText; // 남은 시간
     public TextMeshProUGUI tryCountText; // 카드 뒤집기 시도 횟수
     public TextMeshProUGUI scoreText; // 최종 점수
+    public TextMeshProUGUI bestScoreText; // 최종 점수
 
     public GameObject card;
     public AudioSource managerSource;
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviour
 
             if (cardsLeft == 2)
             {
-                Invoke("GameEnd", 1f);
+                Invoke("GameOver", 0.0f);
             }
             else
             {
@@ -193,8 +194,23 @@ public class GameManager : MonoBehaviour
 
         inGamePanel.SetActive(false);
         resultPanel.SetActive(true);
+        time = 0.00f;
+        if (PlayerPrefs.HasKey("bestScore") == false) //최고점수 업데이트
+        {
+
+            PlayerPrefs.SetFloat("bestScore", score);
+        }
+        else
+        {
+            if (PlayerPrefs.GetFloat("bestScore") < score)
+            {
+                PlayerPrefs.SetFloat("bestScore", score);
+            }
+        }
         remainTimeText.text = time.ToString("N2");
         tryCountText.text = matchTryCount.ToString();
+       
         scoreText.text = score.ToString();
+        bestScoreText.text = PlayerPrefs.GetFloat("bestScore").ToString();
     }
 }
