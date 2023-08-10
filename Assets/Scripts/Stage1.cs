@@ -18,6 +18,7 @@ public class Stage1 : MonoBehaviour
     }
     public void ChooseStage()
     {
+        PlayerPrefs.SetInt("diff", 1); //난이도 상수
         SceneManager.LoadScene("MainStage");
     }
 }
