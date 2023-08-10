@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
 
+    public TimeText timeTextAnimation;
+
     public GameObject firstCard;
     public GameObject secondCard;
     public TextMeshProUGUI timeText;
@@ -173,6 +175,7 @@ public class GameManager : MonoBehaviour
         }
         else // 다른 카드라면
         {
+            timeTextAnimation.MatchFailed();
             // 같은 카드가 아니라면
             time--; // 잔여 시간에서 1초 빼기
             score--; // score에서 1씩 빼기
@@ -197,4 +200,6 @@ public class GameManager : MonoBehaviour
         tryCountText.text = matchTryCount.ToString();
         scoreText.text = score.ToString();
     }
+
+    
 }

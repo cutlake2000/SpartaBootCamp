@@ -53,6 +53,8 @@ MonoBehaviour:
   cardnum: 0
   cardSource: {fileID: -4972060006198351874}
   flipSound: {fileID: 8300000, guid: f9400447caa5bdf4c97831480d48ca41, type: 3}
+  front: {fileID: 7626405237116929888}
+  back: {fileID: 8570332723737796653}
 --- !u!114 &-5334293063619110974
 MonoBehaviour:
   m_ObjectHideFlags: 0
