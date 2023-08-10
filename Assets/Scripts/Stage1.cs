@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton : MonoBehaviour
+public class Stage1 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,8 @@ public class StartButton : MonoBehaviour
     {
         
     }
-
-    public void GameStart()
+    public void ChooseStage()
     {
-        SceneManager.LoadScene("ChooseStage");
+        SceneManager.LoadScene("MainStage");
     }
 }

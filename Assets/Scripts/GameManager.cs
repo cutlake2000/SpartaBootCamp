@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
             if (cardsLeft == 2)
             {
                 Invoke("GameOver", 0.0f);
+                PlayerPrefs.SetInt("clear", 0);
             }
             else
             {
@@ -191,6 +192,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Time.timeScale = 0.0f;
+      
 
         inGamePanel.SetActive(false);
         resultPanel.SetActive(true);
