@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public AudioClip checkSound;
 
     private float timeLimit = 0.0f;
-    float time = 30f;
+    float time = 40f;
     int score; // 게임 점수
 
     public int matchTryCount; // 카드 뒤집은 횟수를 저장할 변수
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         gameManager = this;
+        time /= PlayerPrefs.GetInt("diff");
     }
 
     void Start()

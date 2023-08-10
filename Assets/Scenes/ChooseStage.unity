@@ -276,7 +276,7 @@ MonoBehaviour:
   m_text: Easy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be0e9e4e2c84ac644a973a9926f2bee4, type: 2}
-  m_sharedMaterial: {fileID: 7823106009223189600, guid: be0e9e4e2c84ac644a973a9926f2bee4, type: 2}
+  m_sharedMaterial: {fileID: -6831150098594085508, guid: be0e9e4e2c84ac644a973a9926f2bee4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 1228179925}
   - component: {fileID: 1228179924}
   - component: {fileID: 1228179923}
+  - component: {fileID: 1228179927}
   m_Layer: 5
   m_Name: 'Stage2Button '
   m_TagString: Untagged
@@ -663,6 +664,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228179921}
   m_CullTransparentMesh: 1
+--- !u!114 &1228179927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228179921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a56d2e461fba284dab0429f91472a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
 --- !u!1 &1314799340
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +910,7 @@ MonoBehaviour:
   m_text: Hard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be0e9e4e2c84ac644a973a9926f2bee4, type: 2}
-  m_sharedMaterial: {fileID: 7823106009223189600, guid: be0e9e4e2c84ac644a973a9926f2bee4, type: 2}
+  m_sharedMaterial: {fileID: -6831150098594085508, guid: be0e9e4e2c84ac644a973a9926f2bee4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

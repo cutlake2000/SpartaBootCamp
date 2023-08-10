@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Stage2 : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Button button;
     void Start()
     {
         if (PlayerPrefs.HasKey("clear") == true)
         {
-            gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            ColorBlock colorBlock = button.colors;
+            colorBlock.normalColor = Color.white;
+            button.colors = colorBlock;
         }
     }
 
@@ -18,5 +22,10 @@ public class Stage2 : MonoBehaviour
     void Update()
     {
         
+    }
+    public void HardGame()
+    {
+        PlayerPrefs.SetInt("diff", 2);
+        SceneManager.LoadScene("MainStage");
     }
 }
