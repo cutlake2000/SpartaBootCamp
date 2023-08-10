@@ -276,22 +276,41 @@ public class GameManager : MonoBehaviour
         time = 0.00f;
 
         // 최고점수 업데이트
-        if (PlayerPrefs.HasKey("bestScore") == false)
+        if (PlayerPrefs.GetInt("diff")==1) // Easy Mode 최고점수 업데이트
         {
-            PlayerPrefs.SetFloat("bestScore", score);
-        }
-        else
-        {
-            if (PlayerPrefs.GetFloat("bestScore") < score)
+            if (PlayerPrefs.HasKey("bestScore") == false)
             {
                 PlayerPrefs.SetFloat("bestScore", score);
             }
+            else
+            {
+                if (PlayerPrefs.GetFloat("bestScore") < score)
+                {
+                    PlayerPrefs.SetFloat("bestScore", score);
+                }
+            }
+            bestScoreText.text = PlayerPrefs.GetFloat("bestScore").ToString();
+        }
+        if (PlayerPrefs.GetInt("diff") == 2) // Hard Mode 최고점수 업데이트
+        {
+            if (PlayerPrefs.HasKey("bestScore1") == false)
+            {
+                PlayerPrefs.SetFloat("bestScore1", score);
+            }
+            else
+            {
+                if (PlayerPrefs.GetFloat("bestScore1") < score)
+                {
+                    PlayerPrefs.SetFloat("bestScore1", score);
+                }
+            }
+            bestScoreText.text = PlayerPrefs.GetFloat("bestScore1").ToString();
         }
 
         remainTimeText.text = time.ToString("N2");
         tryCountText.text = matchTryCount.ToString();
 
         scoreText.text = score.ToString();
-        bestScoreText.text = PlayerPrefs.GetFloat("bestScore").ToString();
+        
     }
 }
