@@ -45,7 +45,7 @@ public class Card : MonoBehaviour
     public void CloseCard()
     {
         cardAnim.SetBool("isSet", true);
-        
+
         Invoke("CloseCardInvoke", 0.5f);
     }
 
@@ -63,7 +63,7 @@ public class Card : MonoBehaviour
     {
         front.SetActive(true);
         back.SetActive(false);
-    }    
+    }
 
     public void RevereseEnd()
     {
