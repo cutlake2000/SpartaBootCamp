@@ -1,2 +1,3 @@
-# TikTacToe
-TikTacToe Mini Game Using C#
+# TikTacToe Game
+
+Mini game "TikTacToe " with using C#
