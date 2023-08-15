@@ -1,0 +1,14 @@
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.csproj.AssemblyReference.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.GeneratedMSBuildEditorConfig.editorconfig
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.AssemblyInfoInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.AssemblyInfo.cs
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.csproj.CoreCompileInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/bin/Debug/netcoreapp3.1/TikTacToe
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/bin/Debug/netcoreapp3.1/TikTacToe.deps.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/bin/Debug/netcoreapp3.1/TikTacToe.runtimeconfig.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/bin/Debug/netcoreapp3.1/TikTacToe.runtimeconfig.dev.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/bin/Debug/netcoreapp3.1/TikTacToe.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/bin/Debug/netcoreapp3.1/TikTacToe.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/Debug/netcoreapp3.1/TikTacToe.genruntimeconfig.cache
