@@ -263,7 +263,7 @@ namespace SnakeGame
 
         public void DrawFood()
         {
-            Console.Write("Food Position x {0} y {1}", foodPosition.x, foodPosition.y);
+            Console.Write("\n\n Food Position - ({0}, {1})", foodPosition.x, foodPosition.y);
             Console.SetCursorPosition(foodPosition.x, foodPosition.y);
             Console.Write("*");
         }
