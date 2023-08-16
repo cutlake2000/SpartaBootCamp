@@ -1,0 +1,14 @@
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.csproj.AssemblyReference.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.GeneratedMSBuildEditorConfig.editorconfig
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.AssemblyInfoInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.AssemblyInfo.cs
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.csproj.CoreCompileInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/bin/Debug/netcoreapp3.1/Snake.deps.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/bin/Debug/netcoreapp3.1/Snake.runtimeconfig.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/bin/Debug/netcoreapp3.1/Snake.runtimeconfig.dev.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/bin/Debug/netcoreapp3.1/Snake.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/bin/Debug/netcoreapp3.1/Snake.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/obj/Debug/netcoreapp3.1/Snake.genruntimeconfig.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/bin/Debug/netcoreapp3.1/Snake
