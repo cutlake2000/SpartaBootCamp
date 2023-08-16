@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/wjGx6hZUDlIrlp4wouBrjsNyeF7ZKgQYv1vr3fp3k8aMRYrtPvAxxQWb8teb3RVc59rKrpKT4SIdV8kDfOUTw==",
+  "dgSpecHash": "0b5wLo+HoseIPiGCxJwBL50Cieue212M4v7luVfssvXGTo1cmHK4VVi6Ul/CX6/ose35ta74CJkHhPeb9Cfb1Q==",
   "success": true,
-  "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/TikTacToe.csproj",
+  "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/TikTacToe.csproj",
   "expectedPackageFiles": [
     "/Users/penguinkim/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"
   ],

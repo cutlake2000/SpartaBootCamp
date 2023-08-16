@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/TikTacToe.csproj": {}
+    "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/TikTacToe.csproj": {}
   },
   "projects": {
-    "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/TikTacToe.csproj": {
+    "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/TikTacToe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/TikTacToe.csproj",
+        "projectUniqueName": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/TikTacToe.csproj",
         "projectName": "TikTacToe",
-        "projectPath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/TikTacToe.csproj",
+        "projectPath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/TikTacToe.csproj",
         "packagesPath": "/Users/penguinkim/.nuget/packages/",
-        "outputPath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTakToe/TikTacToe/obj/",
+        "outputPath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/penguinkim/.nuget/NuGet/NuGet.Config"
