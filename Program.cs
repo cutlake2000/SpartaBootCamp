@@ -30,9 +30,9 @@ namespace SnakeGame
                     snake.MoveSnake();
                     // 음식먹기
                     snake.EatFood(food.foodPosition, food);
-                    // 자기 자신과 충돌
+                    // 자기 자신과 충돌 시
                     snake.ConflictWithItself();
-                    // 벽과 충
+                    // 벽과 충돌 시
                     snake.ConflictWithWall(canvas);
                 }
                 catch (GameOver e)
@@ -73,7 +73,7 @@ namespace SnakeGame
 
         public void DrawSnake()
         {
-            // 뱀 그리
+            // 뱀 그리기
             foreach (Position pos in snakeBody)
             {
                 Console.SetCursorPosition(pos.x, pos.y);
@@ -91,26 +91,32 @@ namespace SnakeGame
             }
         }
 
+        // 뱀 움직일 방향 고정
         private void Direction()
         {
+            // 위쪽 키 입력 & 아래쪽 방향이 아니라면
             if (key == 'w' && dir != 'd')
             {
                 dir = 'u';
             }
+            // 아래쪽 키 입력 & 위쪽 방향이 아니라면
             else if (key == 's' && dir != 'u')
             {
                 dir = 'd';
             }
+            // 왼쪽 키 입력 & 오른쪽 방향이 아니라면
             else if (key == 'a' && dir != 'r')
             {
                 dir = 'l';
             }
+            // 오른쪽 키 입력 & 왼쪽 방향이 아니라면
             else if (key == 'd' && dir != 'l')
             {
                 dir = 'r';
             }
         }
 
+        // 뱀 움직이기
         public void MoveSnake()
         {
             Direction();
@@ -132,24 +138,34 @@ namespace SnakeGame
                 x++;
             }
 
+            // 다음 위치를 List에 추가하고
             snakeBody.Add(new Position(x, y));
+            // 맨 마지막 리스트 요소 제거
             snakeBody.RemoveAt(0);
+
             Thread.Sleep(100);
         }
 
+        // 음식 먹기
         public void EatFood(Position foodPosition, Food food)
         {
+            // 뱀의 머리 위치 가져오기
             Position head = snakeBody[snakeBody.Count - 1];
 
+            // 뱀 머리 위치가 음식의 위치와 일치한다면
             if (head.x == foodPosition.x && head.y == foodPosition.y)
             {
+                // 현 위치 값을 가지는 새 Position 값 List에 추가
                 snakeBody.Add(new Position(x, y));
+                // 음식 - 다음 위치 그리기
                 food.DrawNextFood();
             }
         }
 
+        // 자신과의 충돌 여부
         public void ConflictWithItself()
         {
+            // 뱀의 머리 위치 가져오기
             Position head = snakeBody[snakeBody.Count - 1];
 
             for (int i = 0; i < snakeBody.Count - 2; i++)
@@ -162,8 +178,10 @@ namespace SnakeGame
             }
         }
 
+        // 벽과의 충돌 여부
         public void ConflictWithWall(Canvas canvas)
         {
+            // 뱀의 머리 위치 가져오기
             Position head = snakeBody[snakeBody.Count - 1];
 
             if (
