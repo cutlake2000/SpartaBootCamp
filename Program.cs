@@ -204,8 +204,6 @@ namespace SnakeGame
             this.x = x;
             this.y = y;
         }
-
-        public Position() { }
     }
 
     // 캔버스 그리기
