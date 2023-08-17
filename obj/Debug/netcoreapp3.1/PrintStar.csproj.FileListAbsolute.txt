@@ -1,0 +1,14 @@
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.csproj.AssemblyReference.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.GeneratedMSBuildEditorConfig.editorconfig
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.AssemblyInfoInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.AssemblyInfo.cs
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.csproj.CoreCompileInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/bin/Debug/netcoreapp3.1/PrintStar
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/bin/Debug/netcoreapp3.1/PrintStar.deps.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/bin/Debug/netcoreapp3.1/PrintStar.runtimeconfig.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/bin/Debug/netcoreapp3.1/PrintStar.runtimeconfig.dev.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/bin/Debug/netcoreapp3.1/PrintStar.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/bin/Debug/netcoreapp3.1/PrintStar.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/PrintStar/obj/Debug/netcoreapp3.1/PrintStar.genruntimeconfig.cache
