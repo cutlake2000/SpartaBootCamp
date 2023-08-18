@@ -18,7 +18,7 @@ namespace PrintStar
                 }
                 Console.Write("\n");
             }
-            Console.Write("\n\n");
+            Console.Write("\n");
 
             // 역직각삼각형 출력하기
             //    5    |    4   |   3   |   2   |   1   <= i
@@ -32,7 +32,7 @@ namespace PrintStar
                 }
                 Console.Write("\n");
             }
-            Console.Write("\n\n");
+            Console.Write("\n");
 
             // 피라미드 출력하기
             //    4    |    3   |   2   |   1   |   0  <= i
@@ -50,9 +50,28 @@ namespace PrintStar
                 {
                     Console.Write("*");
                 }
-
                 Console.Write("\n");
             }
+            Console.Write("\n");
+
+            // Simple is Best
+            Console.WriteLine("*");
+            Console.WriteLine("**");
+            Console.WriteLine("***");
+            Console.WriteLine("****");
+            Console.WriteLine("*****\n");
+
+            Console.WriteLine("*****");
+            Console.WriteLine("****");
+            Console.WriteLine("***");
+            Console.WriteLine("**");
+            Console.WriteLine("*\n");
+
+            Console.WriteLine("    *");
+            Console.WriteLine("   ***");
+            Console.WriteLine("  *****");
+            Console.WriteLine(" *******");
+            Console.WriteLine("*********\n");
         }
     }
 }
