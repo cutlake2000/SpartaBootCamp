@@ -123,27 +123,28 @@ namespace SnakeGame
 
             if (dir == 'u')
             {
-                y--;
+                --y;
             }
             else if (dir == 'd')
             {
-                y++;
+                ++y;
             }
             else if (dir == 'l')
             {
-                x--;
+                --x;
             }
             else if (dir == 'r')
             {
-                x++;
+                ++x;
             }
 
             // 다음 위치를 List에 추가하고
             snakeBody.Add(new Position(x, y));
+
             // 맨 마지막 리스트 요소 제거
             snakeBody.RemoveAt(0);
 
-            Thread.Sleep(100);
+            Thread.Sleep(1000);
         }
 
         // 음식 먹기
@@ -157,6 +158,7 @@ namespace SnakeGame
             {
                 // 현 위치 값을 가지는 새 Position 값 List에 추가
                 snakeBody.Add(new Position(x, y));
+
                 // 음식 - 다음 위치 그리기
                 food.DrawNextFood();
             }
@@ -263,7 +265,6 @@ namespace SnakeGame
 
         public void DrawFood()
         {
-            Console.Write("\n\n Food Position - ({0}, {1})", foodPosition.x, foodPosition.y);
             Console.SetCursorPosition(foodPosition.x, foodPosition.y);
             Console.Write("*");
         }
