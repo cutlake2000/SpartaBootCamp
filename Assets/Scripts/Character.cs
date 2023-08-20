@@ -21,7 +21,7 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -32,13 +32,23 @@ public class Character : MonoBehaviour
     
     public void SizeUp()
     {
-        transform.localScale = new Vector3(1.0f, 2.0f, 1);
+        transform.localScale = new Vector3(2.0f, 2.0f, 0);
     }
 
     public void DefaultSize()
     {
-        transform.localScale = new Vector3(0.5f, 1.0f, 1);
+        transform.localScale = new Vector3(1.0f, 1.0f, 0);
     }
-    
-    
+
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("TriggerObject"))
+        {
+            Vector2 force = new Vector2(-100f,0);
+            Rigidbody2D rb2D = transform.GetComponent<Rigidbody2D>();
+            rb2D.AddForce(force);
+
+        }
+    }
 }
