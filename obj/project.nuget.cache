@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Ja2USv5MKHIDe4Rg1w1U2mrkEYsa602AAtHszApFS48W8rId20tYYIGwOTiW6KmG3kW9i1arypdUMT1SoeTiIg==",
+  "dgSpecHash": "pz0FIxIKcmNZ6eMEjIJXPEjxxHVlR1xvX7xrrIy6mUgeavBElOieqkrU1e3h4QinthTDG7D8ZYO+BUFgBQmOAA==",
   "success": true,
   "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/BlackJack.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/penguinkim/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }
