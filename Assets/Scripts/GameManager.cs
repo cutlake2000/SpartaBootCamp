@@ -11,6 +11,16 @@ public class GameManager : MonoBehaviour
     GameObject springBoard;
     int characterListIndex = 0;
     bool isStart = false;
+    bool isJumping = false;
+    bool isReady = false;
+    GameObject target;
+
+    // 1. 게임캐릭터
+    // 캐릭터 리스트 -> 점프대 -> 맵 (StartPoint -> EndPoint)
+
+    // 캐릭터가 EndPoint에 들어갔을경우 (닿았을경우)
+    // 해당 EndPoint를 닫고 그위에 스프링? 설치
+    // 이미 닫힌 EndPoint에 들어가려고 시도할 경우 다시 위로 점프
 
     private void Awake()
     {
@@ -32,6 +42,12 @@ public class GameManager : MonoBehaviour
         if (isStart)
         {
             FillSpringBoard();
+
+            if (isJumping)
+            {
+                Vector3 targetPos = target.transform.localPosition; 
+                Camera.main.transform.position = new Vector3(targetPos.x, targetPos.y, -10);
+            }
         }
         
     }
@@ -87,7 +103,7 @@ public class GameManager : MonoBehaviour
 
     public void FillSpringBoard()
     {
-        if (springBoard.transform.childCount == 0 && characterList.Count >0)
+        if (springBoard.transform.childCount == 0 && characterList.Count >0 && !isReady)
         {
             characterList[0].transform.parent = springBoard.transform;
             Invoke("SpringBoardMove", 1.0f);
@@ -100,20 +116,31 @@ public class GameManager : MonoBehaviour
         springBoard.transform.GetChild(0).localPosition = new Vector3(0, 0, 0);
         springBoard.transform.GetChild(0).GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         characterList.RemoveAt(0);
+        isReady = true;
+
     }
 
     public void JumpCharacter()
     {
-        if (springBoard.transform.childCount > 0)
+        if (springBoard.transform.childCount > 0 && isReady)
         {
             Vector2 force = new Vector2(0, 2000f);
             Transform ch = springBoard.transform.GetChild(0);
+            target = ch.gameObject;
             Rigidbody2D rb2D = ch.GetComponent<Rigidbody2D>();
             rb2D.AddForce(force);
-            rb2D.AddTorque(100f);
+            rb2D.AddTorque(5f);
             ch.parent = null;
+            isJumping = true;
         }
         
+    }
+
+    public void JumpEnd()
+    {
+        isReady = false;
+        isJumping = false;
+        Camera.main.transform.position = new Vector3(1, -2, -10);
     }
 
     // 바닥, 물체1, 물체2 가있을때
