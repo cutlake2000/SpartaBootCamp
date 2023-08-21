@@ -55,10 +55,10 @@ namespace SpartaDungeonGame
             } while (isGameEnd == false);
         }
 
-        // 캐릭터창 출력
+        // 캐릭터 정보창 출력
         void CallStatusScene()
         {
-            sceneManager.SetStatus();
+            sceneManager.SetStatusScene();
 
             switch (InputKey())
             {
@@ -71,10 +71,29 @@ namespace SpartaDungeonGame
             }
         }
 
-        // 인벤토리창 출력
+        // 인벤토리 창 출력
         void CallInventoryScene()
         {
-            sceneManager.SetInventory();
+            sceneManager.SetInventoryScene();
+
+            switch (InputKey())
+            {
+                case ConsoleKey.D1: // 아이템 장착
+                    CallEquipWeaponScene();
+                    break;
+                case ConsoleKey.D2: // 나가기
+                    CallMainScene();
+                    break;
+            }
+        }
+
+        // 장비 장착창 출력
+        void CallEquipWeaponScene()
+        {
+            do
+            {
+                sceneManager.SetEquipWeaponScene();
+            } while (InputKey() == ConsoleKey.D0);
         }
 
         // 상점창 출력

@@ -45,5 +45,23 @@ namespace SpartaDungeonGame
             Console.SetCursorPosition(35, canvas.canvasHeight - 3);
             Console.Write("2. 나가기");
         }
+
+        // 인벤토리창 메시지 출력
+        public void SetMessageInInventoryPanel()
+        {
+            Console.SetCursorPosition(35, canvas.canvasHeight - 4);
+            Console.Write("1. 아이템 장착");
+            Console.SetCursorPosition(35, canvas.canvasHeight - 3);
+            Console.Write("2. 나가기");
+        }
+
+        // 장비 장착창 메시지 출력
+        public void SetMessageInEquipWeaponPanel()
+        {
+            Console.SetCursorPosition(35, canvas.canvasHeight - 4);
+            Console.Write("장착 / 장착 해제할 장비의 번호를 입력해주세요.");
+            Console.SetCursorPosition(35, canvas.canvasHeight - 3);
+            Console.Write("0. 장비 장착 종료");
+        }
     }
 }
