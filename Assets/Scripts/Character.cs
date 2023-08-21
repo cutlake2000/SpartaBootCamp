@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("TriggerObject"))
         {
-            Vector2 force = new Vector2(-100f,0);
+            Vector2 force = new Vector2(-300f,0);
             Rigidbody2D rb2D = transform.GetComponent<Rigidbody2D>();
             rb2D.AddForce(force);
 

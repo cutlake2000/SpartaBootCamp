@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             isStart = true;
         }
 
-        Camera.main.transform.position = new Vector3(1, -2, -10);
+        Camera.main.transform.position = new Vector3(0, 0, -10);
     }
     public void CharacterListInit()
     {
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         if (springBoard.transform.childCount > 0)
         {
-            Vector2 force = new Vector2(0, 1000f);
+            Vector2 force = new Vector2(0, 2000f);
             Transform ch = springBoard.transform.GetChild(0);
             Rigidbody2D rb2D = ch.GetComponent<Rigidbody2D>();
             rb2D.AddForce(force);
