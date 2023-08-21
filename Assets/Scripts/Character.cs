@@ -41,14 +41,18 @@ public class Character : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collider.gameObject.CompareTag("TriggerObject"))
+        if (collision.gameObject.CompareTag("TriggerObject"))
         {
             Vector2 force = new Vector2(-300f,0);
             Rigidbody2D rb2D = transform.GetComponent<Rigidbody2D>();
             rb2D.AddForce(force);
 
+        }
+        else if (collision.gameObject.CompareTag("EndPoint"))
+        {
+            GameManager.Instance.JumpEnd();
         }
     }
 }
