@@ -4,58 +4,83 @@ namespace SpartaDungeonGame
 {
     public class SpartaDungeon
     {
-        Canvas canvas = new Canvas();
-        Message message = new Message();
+        SceneManager sceneManager = new SceneManager();
+
+        ConsoleKey inputKey = ConsoleKey.Clear; // 플레이어 입력을 관리할 변수
+        bool isGameEnd = false;
 
         public void Run()
         {
-            // 타이틀 출력하는 메소드
-            SetTitleScene();
-
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
-            {
-                SetInGameScene();
-            }
-
-            switch (Console.ReadKey().KeyChar)
-            {
-                case '1':
-                    SetPlayerStatus();
-                    break;
-                case '2':
-                    Console.Write("2번 눌렀음");
-                    break;
-                case '3':
-                    Console.Write("3번 눌렀음");
-                    break;
-            }
+            // 타이틀 출력
+            CallTitleScene();
+            // 메인씬 출력
+            CallMainScene();
 
             Console.SetCursorPosition(0, 21);
         }
 
-        // 타이틀 출력하는 메소드
-        void SetTitleScene()
+        ConsoleKey InputKey()
         {
-            canvas.DrawCanvasOutLine();
-            canvas.DrawCanvasTitle();
-            message.SetMessageInTitleScene();
+            return Console.ReadKey().Key;
         }
 
-        // 첫 스테이지를 출력하는 메소드
-        void SetInGameScene()
+        // 타이틀 출력
+        void CallTitleScene()
         {
-            canvas.DrawCanvasOutLine();
-            canvas.DrawMainMessagePanel(1, canvas.canvasWidth - 1, canvas.canvasHeight - 8);
-            message.SetMessageFirstStage();
+            do
+            {
+                sceneManager.SetTitleScene();
+            } while (InputKey() != ConsoleKey.Enter);
         }
 
-        // 플레이어 상태창을 출력하는 메소드
-        void SetPlayerStatus()
+        // 메인씬 출력
+        void CallMainScene()
         {
-            canvas.DrawCanvasOutLine();
-            canvas.DrawPlayerStatus();
-            canvas.DrawPlayer(7, 6);
-            canvas.DrawMainMessagePanel(35, canvas.canvasWidth - 2, canvas.canvasHeight - 8);
+            do
+            {
+                sceneManager.SetMainScene();
+
+                switch (InputKey())
+                {
+                    case ConsoleKey.D1: // 캐릭터
+                        CallStatusScene();
+                        break;
+                    case ConsoleKey.D2: // 인벤토리
+                        CallInventoryScene();
+                        break;
+                    case ConsoleKey.D3: // 상점
+                        CallShopScene();
+                        break;
+                }
+            } while (isGameEnd == false);
+        }
+
+        // 캐릭터창 출력
+        void CallStatusScene()
+        {
+            sceneManager.SetStatus();
+
+            switch (InputKey())
+            {
+                case ConsoleKey.D1: // 인벤토리
+                    CallInventoryScene();
+                    break;
+                case ConsoleKey.D2: // 나가기
+                    CallMainScene();
+                    break;
+            }
+        }
+
+        // 인벤토리창 출력
+        void CallInventoryScene()
+        {
+            sceneManager.SetInventory();
+        }
+
+        // 상점창 출력
+        void CallShopScene()
+        {
+            sceneManager.SetShop();
         }
     }
 }

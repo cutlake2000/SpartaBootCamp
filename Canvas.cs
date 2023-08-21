@@ -97,7 +97,7 @@ namespace SpartaDungeonGame
             );
         }
 
-        // 메시지를 출력할 패널 그리기
+        // 메시지를 출력할 패널 아웃라인 그리기
         public void DrawMainMessagePanel(int posX1, int posX2, int posY)
         {
             for (int i = posX1; i <= posX2; i++)
@@ -108,8 +108,26 @@ namespace SpartaDungeonGame
         }
 
         // 플레이어 상태창 그리기
-        public void DrawPlayerStatus()
+        public void DrawPlayerStatus(
+            int playerLevel,
+            string playerClass,
+            int playerAttack,
+            int playerDefence,
+            int playerHealth,
+            int playerGold
+        )
         {
+            string playerMainInfo = "Lv. " + playerLevel + "   " + playerClass;
+            int playerMainInfoLength = playerMainInfo.Length;
+            string playerAttackInfo = playerAttack.ToString();
+            int playerAttackInfoLength = playerAttackInfo.Length;
+            string playerDefenceInfo = playerDefence.ToString();
+            int playerDefenceInfoLength = playerDefenceInfo.Length;
+            string playerHealthInfo = playerHealth.ToString();
+            int playerHealthInfoLength = playerHealthInfo.Length;
+            string playerGoldInfo = playerGold.ToString();
+            int playerGoldInfoLength = playerGoldInfo.Length;
+
             Console.SetCursorPosition(5, 2);
             Console.Write("༺═━━━━━━ Player ━━━━━═༻");
             Console.SetCursorPosition(5, canvasHeight - 3);
@@ -117,9 +135,53 @@ namespace SpartaDungeonGame
 
             for (int i = 1; i < canvasHeight - 1; i++)
             {
-                Console.SetCursorPosition(34, i);
+                Console.SetCursorPosition(33, i);
                 Console.Write("║");
             }
+
+            int a = playerClass.Length;
+
+            Console.SetCursorPosition(37, 2);
+            Console.Write("༺═━━━━━ Status ━━━━═༻");
+            Console.SetCursorPosition(37, 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━═༻");
+
+            for (int i = 1; i < canvasHeight - 6; i++)
+            {
+                Console.SetCursorPosition(62, i);
+                Console.Write("|");
+            }
+
+            Console.SetCursorPosition(66, 2);
+            Console.Write("༺═━━━━━━━ Equipment ━━━━━━═༻");
+            Console.SetCursorPosition(66, 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━━═༻");
+
+            Console.SetCursorPosition((33 - playerMainInfoLength) / 2, canvasHeight - 5);
+            Console.Write(playerMainInfo);
+            Console.SetCursorPosition(38, 4);
+            Console.Write(" 공격력   | ");
+            Console.SetCursorPosition(38, 6);
+            Console.Write(" 방어력   | ");
+            Console.SetCursorPosition(38, 8);
+            Console.Write(" 체  력   | ");
+            Console.SetCursorPosition(38, 10);
+            Console.Write(" 소지금   | ");
+            Console.SetCursorPosition((53 - playerAttackInfoLength) + 5, 4);
+            Console.Write(playerAttack);
+            Console.SetCursorPosition((53 - playerDefenceInfoLength) + 5, 6);
+            Console.Write(playerDefence);
+            Console.SetCursorPosition((53 - playerHealthInfoLength) + 5, 8);
+            Console.Write(playerHealth);
+            Console.SetCursorPosition((53 - playerGoldInfoLength) + 3, 10);
+            Console.Write(playerGold + " G");
+        }
+
+        // 플레이어 인벤토리 창 그리기
+        public void DrawPlayerInventory()
+        {
+            Console.SetCursorPosition(20, 20);
+            Console.Write("인벤토리 열기");
         }
 
         // 플레이어 그리기
@@ -145,6 +207,25 @@ namespace SpartaDungeonGame
             Console.Write("    /  ﾐ`——彡  \\");
         }
 
+        // 마을 그리기
+        public void DrawTown(int posX, int posY){
+                        Console.SetCursorPosition(posX, posY  + 2);
+            Console.Write("。° 。 ° ˛ ˚ ˛ ˚ ˛ ·˚");
+                        Console.SetCursorPosition(posX, posY + 3);
+            Console.Write("· 。 ° · 。 · ˚ ˚ ˛ ˚ ˛");
+                        Console.SetCursorPosition(posX, posY + 4);
+            Console.Write("。° 。 ° 。˚ ˛ · ˚ ˚ ˛");
+                        Console.SetCursorPosition(posX, posY + 5);
+            Console.Write(" ˛ ˚ ˛ ˚ 。 · ˚ ˚ ˛ ˚ ˛ · ·");
+                        Console.SetCursorPosition(posX, posY + 6);
+            Console.Write("。 ° · 。。* 。° 。 ° ˛ ˚ ˛");
+                        Console.SetCursorPosition(posX, posY + 7);
+            Console.Write("* _Π_____*。*˚ ˚ ˛ ˚ ˛ ·˛ ·˚");
+                        Console.SetCursorPosition(posX, posY + 8);
+            Console.Write("*/______/~~\\。˚ ˚ ˛ ˚ ˛ ·˛ ·˚");
+                        Console.SetCursorPosition(posX, posY + 9);
+            Console.Write("｜田 田｜門｜ ˚ ˛ ˚ ˛ ·");
+        }
         // 드래곤 그리기
         public void DrawDragon(int posX, int posY)
         {
