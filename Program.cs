@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace SpartaDungeon
+namespace SpartaDungeonGame
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            SpartaDungeon spartaDungeon = new SpartaDungeon();
+
+            spartaDungeon.Run();
         }
     }
 }

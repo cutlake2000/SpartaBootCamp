@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ieThkFk6TQWcf+NMUQuqxnnTByEuStZ9x2LEybUt1V4SRUmTpCTtiIiVYvOKu1DUDFrfKP3l4gkIGnW4O8MVyQ==",
+  "dgSpecHash": "0ZISi2HDXWTX7OF2D1TyU6pWnjgOx923mvveb7SEoLvcpmPSOHI7H0ZOlmwqArawHDBSOW01bPDaSnOCPU9ZJw==",
   "success": true,
-  "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/SpartaDungeon/SpartaDungeon.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/SpartaDungeonGame/SpartaDungeon.csproj",
+  "expectedPackageFiles": [
+    "/Users/penguinkim/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }
