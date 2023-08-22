@@ -5,10 +5,12 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public string name;
+    Rigidbody2D rb2D;
     public bool isJumping = false;
+    public bool isBoosting = false;
     private void Awake()
     {
-
+        rb2D = transform.GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -43,11 +45,11 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("TriggerObject"))
+        if (collision.gameObject.CompareTag("TriggerObject") && !isBoosting)
         {
-            Vector2 force = new Vector2(-100f,60f);
-            Rigidbody2D rb2D = transform.GetComponent<Rigidbody2D>();
-            rb2D.AddForce(force);
+            isBoosting = true;
+            rb2D.AddTorque(0.8f);
+            rb2D.AddForce(new Vector2(Random.Range(-20f, -50f), 0f));
 
         }
         else if (collision.gameObject.CompareTag("EndPoint"))
@@ -56,6 +58,17 @@ public class Character : MonoBehaviour
             GameManager.Instance.SpringBoard.GetComponent<SpringBoard>().FillSpringBoard();
             isJumping = false;
             Camera.main.transform.position = new Vector3(0, 0, -10);
+            collision.transform.GetChild(0).gameObject.SetActive(true);
+
+        }
+        else if (collision.gameObject.CompareTag("Branch"))
+        {
+           // 厘局拱 面倒贸府
+
+        }
+        else if (collision.gameObject.CompareTag("Closed"))
+        {
+            rb2D.AddForce(new Vector2(Random.Range(-25f, 25f), Random.Range (25f, 50f)));
 
         }
     }

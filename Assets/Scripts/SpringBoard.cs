@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpringBoard : MonoBehaviour
 {
-    Vector2 springJumpPower = new Vector2(-10f, 1000f);
-    float springTurnPower = 2.0f;
+    Vector2 springJumpPower;
     public bool isReady = false;
 
     void Start()
     {
+        springJumpPower = new Vector2(0f, Random.Range(100f, 120f));
         FillSpringBoard();
     }
 
@@ -49,7 +49,6 @@ public class SpringBoard : MonoBehaviour
             Rigidbody2D rb2D = transform.GetChild(0).GetComponent<Rigidbody2D>();
 
             rb2D.AddForce(springJumpPower);
-            rb2D.AddTorque(springTurnPower);
 
             transform.GetChild(0).GetComponent<Character>().isJumping = true;
             transform.GetChild(0).parent = null;
