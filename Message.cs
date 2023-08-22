@@ -95,5 +95,12 @@ namespace SpartaDungeonGame
             Console.SetCursorPosition(35, canvas.canvasHeight - 4);
             Console.Write("이미 구매한 상품입니다.                      ");
         }
+
+        // 금액이 부족할 때 경고 메시지 출력
+        public void SetErrorMessageLowMoneyInShopPanel()
+        {
+            Console.SetCursorPosition(35, canvas.canvasHeight - 4);
+            Console.Write("금액이 부족합니다.                           ");
+        }
     }
 }

@@ -137,7 +137,10 @@ namespace SpartaDungeonGame
                         }
                         else
                         {
-                            if (shopper.products[productIndex - 1].price > player.gold) { }
+                            if (shopper.products[productIndex - 1].price > player.gold)
+                            {
+                                message.SetErrorMessageLowMoneyInShopPanel();
+                            }
                             else
                             {
                                 player.Purchase(shopper.products[productIndex - 1].price);
