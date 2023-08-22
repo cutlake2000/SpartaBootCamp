@@ -43,12 +43,25 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Branch"))
+        {
+            // 厘局拱 面倒贸府
+
+        }
+        else if (collision.gameObject.CompareTag("Closed"))
+        {
+            rb2D.AddForce(new Vector2(Random.Range(-25f, 25f), Random.Range(25f, 50f)));
+
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("TriggerObject") && !isBoosting)
         {
             isBoosting = true;
-            rb2D.AddTorque(0.8f);
+            rb2D.AddTorque(0.2f);
             rb2D.AddForce(new Vector2(Random.Range(-20f, -50f), 0f));
 
         }
@@ -61,15 +74,6 @@ public class Character : MonoBehaviour
             collision.transform.GetChild(0).gameObject.SetActive(true);
 
         }
-        else if (collision.gameObject.CompareTag("Branch"))
-        {
-           // 厘局拱 面倒贸府
 
-        }
-        else if (collision.gameObject.CompareTag("Closed"))
-        {
-            rb2D.AddForce(new Vector2(Random.Range(-25f, 25f), Random.Range (25f, 50f)));
-
-        }
     }
 }
