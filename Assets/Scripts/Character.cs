@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    // 게임 매니저에서는 char들을 list로 관리한다.
-
-    // 버튼을 누르면 이번 캐릭터의 isSelected = false가되고
-    // index++ 되면서 list에 해당된 캐릭터들의 isSelected = true가 된다.
-    // 만약 캐릭터의 isSelected가 true라면 캐릭터의 Scale이 커진다.
-
-    // Update문에서 호출하면 계속해서 isSelected를 검사해야하니까
-    // 그냥 버튼에 함수를 연결?
     public string name;
-
+    public bool isJumping = false;
     private void Awake()
     {
 
@@ -27,7 +19,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GetCamera();
     }
     
     public void SizeUp()
@@ -40,19 +32,31 @@ public class Character : MonoBehaviour
         transform.localScale = new Vector3(1.0f, 1.0f, 0);
     }
 
+    public void GetCamera()
+    {
+        if (isJumping)
+        {
+            Vector3 targetPos = transform.localPosition;
+            Camera.main.transform.position = new Vector3(targetPos.x, targetPos.y, -10);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("TriggerObject"))
         {
-            Vector2 force = new Vector2(-300f,0);
+            Vector2 force = new Vector2(-100f,60f);
             Rigidbody2D rb2D = transform.GetComponent<Rigidbody2D>();
             rb2D.AddForce(force);
 
         }
         else if (collision.gameObject.CompareTag("EndPoint"))
         {
-            GameManager.Instance.JumpEnd();
+            transform.parent = collision.transform;
+            GameManager.Instance.SpringBoard.GetComponent<SpringBoard>().FillSpringBoard();
+            isJumping = false;
+            Camera.main.transform.position = new Vector3(0, 0, -10);
+
         }
     }
 }
