@@ -1,5 +1,12 @@
 # SpartaDungeon-Game
 
----
+스파르타 던전 미니 게임
 
-Mini Game "SpartaDungeon" with using C#
+# 프로젝트 소개
+
+## 기능 구현 (필수 요구 사항)
+
+1. 게임 시작 화면 ☑️
+   1.
+2. 상태보기 ☑️
+3.
