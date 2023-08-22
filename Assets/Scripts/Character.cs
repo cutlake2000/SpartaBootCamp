@@ -7,7 +7,6 @@ public class Character : MonoBehaviour
     public string name;
     Rigidbody2D rb2D;
     public bool isJumping = false;
-    public bool isBoosting = false;
     private void Awake()
     {
         rb2D = transform.GetComponent<Rigidbody2D>();
@@ -58,11 +57,10 @@ public class Character : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("TriggerObject") && !isBoosting)
+        if (collision.gameObject.CompareTag("TriggerObject"))
         {
-            isBoosting = true;
-            rb2D.AddTorque(0.2f);
-            rb2D.AddForce(new Vector2(Random.Range(-20f, -50f), 0f));
+            rb2D.AddTorque(0.05f);
+            rb2D.AddForce(new Vector2(Random.Range(-7f, -12f), 10f));
 
         }
         else if (collision.gameObject.CompareTag("EndPoint"))
