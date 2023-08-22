@@ -5,21 +5,23 @@ using System.Threading.Tasks;
 
 namespace SpartaDungeonGame
 {
-    public class Inventory : Item
+    public class Product : Item
     {
-        public Inventory(
-            bool isEquiped,
+        public Product(
+            bool isSold,
             string name,
             StatOption statClass,
             int statPoint,
-            string description
+            string description,
+            int price
         )
         {
-            this.isEquiped = isEquiped;
+            this.isSold = isSold;
             this.name = name;
             this.statClass = statClass;
             this.statPoint = statPoint;
             this.description = description;
+            this.price = price;
         }
     }
 }

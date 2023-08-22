@@ -46,10 +46,13 @@ namespace SpartaDungeonGame
                         CallStatusScene();
                         break;
                     case ConsoleKey.D2: // 인벤토리
-                        CallInventoryScene();
+                        CallInventoryScene(SceneStatus.FromMain);
                         break;
                     case ConsoleKey.D3: // 상점
                         CallShopScene();
+                        break;
+                    default:
+                        CallMainScene();
                         break;
                 }
             } while (isGameEnd == false);
@@ -63,43 +66,57 @@ namespace SpartaDungeonGame
             switch (InputKey())
             {
                 case ConsoleKey.D1: // 인벤토리
-                    CallInventoryScene();
+                    CallInventoryScene(SceneStatus.FromStatus);
                     break;
                 case ConsoleKey.D2: // 나가기
                     CallMainScene();
+                    break;
+                default:
+                    CallStatusScene();
                     break;
             }
         }
 
         // 인벤토리 창 출력
-        void CallInventoryScene()
+        void CallInventoryScene(SceneStatus status)
         {
             sceneManager.SetInventoryScene();
 
             switch (InputKey())
             {
                 case ConsoleKey.D1: // 아이템 장착
-                    CallEquipWeaponScene();
+                    CallEquipWeaponScene(status);
                     break;
                 case ConsoleKey.D2: // 나가기
-                    CallMainScene();
+                    if (status == SceneStatus.FromMain)
+                        CallMainScene();
+                    else if (status == SceneStatus.FromStatus)
+                        CallStatusScene();
+                    break;
+                default:
+                    CallInventoryScene(status);
                     break;
             }
         }
 
         // 장비 장착창 출력
-        void CallEquipWeaponScene()
+        void CallEquipWeaponScene(SceneStatus status)
         {
-            do
-            {
-                sceneManager.SetEquipWeaponScene();
-            } while (InputKey() == ConsoleKey.D0);
+            sceneManager.SetEquipWeaponScene();
+
+            CallInventoryScene(status);
         }
 
         // 상점창 출력
         void CallShopScene()
         {
-            sceneManager.SetShop();
+            sceneManager.SetShopScene();
+        }
+
+        enum SceneStatus
+        {
+            FromMain,
+            FromStatus
         }
     }
 }

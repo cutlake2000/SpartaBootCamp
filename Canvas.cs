@@ -123,17 +123,17 @@ namespace SpartaDungeonGame
             {
                 if (player.inventories[i].isEquiped == true)
                 {
-                    if (player.inventories[i].statPoint1 != 0)
+                    if (player.inventories[i].statClass == Item.StatOption.ATK)
                     {
-                        equipmentStatATK += player.inventories[i].statPoint1;
+                        equipmentStatATK += player.inventories[i].statPoint;
                     }
-                    if (player.inventories[i].statPoint2 != 0)
+                    else if (player.inventories[i].statClass == Item.StatOption.DEF)
                     {
-                        equipmentStatDEF += player.inventories[i].statPoint2;
+                        equipmentStatDEF += player.inventories[i].statPoint;
                     }
-                    if (player.inventories[i].statPoint3 != 0)
+                    else if (player.inventories[i].statClass == Item.StatOption.HP)
                     {
-                        equipmentStatHP += player.inventories[i].statPoint3;
+                        equipmentStatHP += player.inventories[i].statPoint;
                     }
                 }
             }
@@ -161,7 +161,7 @@ namespace SpartaDungeonGame
             // Status 그리기
             Console.SetCursorPosition(infoLongPanelWidth + 4, 2);
             Console.Write("༺═━━━━━ Status ━━━━═༻");
-            Console.SetCursorPosition(infoLongPanelWidth + 4, 12);
+            Console.SetCursorPosition(infoLongPanelWidth + 4, 13);
             Console.Write("༺═━━━━━━━━━━━━━━━━━═༻");
 
             Console.SetCursorPosition((33 - playerMainInfoLength) / 2, canvasHeight - 5);
@@ -172,16 +172,16 @@ namespace SpartaDungeonGame
             Console.Write(" 방어력   | ");
             Console.SetCursorPosition(infoLongPanelWidth + 5, 8);
             Console.Write(" 체  력   | ");
-            Console.SetCursorPosition(infoLongPanelWidth + 5, 10);
+            Console.SetCursorPosition(infoLongPanelWidth + 5, 11);
             Console.Write(" 소지금   | ");
 
-            Console.SetCursorPosition((53 - playerAttackInfoLength) + 6, 4);
+            Console.SetCursorPosition(infoLongPanelWidth + 19, 4);
             Console.Write(playerAttackInfo);
-            Console.SetCursorPosition((53 - playerDefenceInfoLength) + 6, 6);
+            Console.SetCursorPosition(infoLongPanelWidth + 19, 6);
             Console.Write(playerDefenceInfo);
-            Console.SetCursorPosition((53 - playerHealthInfoLength) + 6, 8);
+            Console.SetCursorPosition(infoLongPanelWidth + 19, 8);
             Console.Write(playerHealthInfo);
-            Console.SetCursorPosition((53 - playerGoldInfoLength) + 6, 10);
+            Console.SetCursorPosition(infoLongPanelWidth + 19, 11);
             Console.Write(playerGoldInfo);
 
             for (int i = 1; i < canvasHeight - 6; i++)
@@ -200,7 +200,7 @@ namespace SpartaDungeonGame
             // 장착 장비 그리기
             Console.SetCursorPosition(66, 2);
             Console.Write("༺═━━━━━━━ Equipment ━━━━━━═༻");
-            Console.SetCursorPosition(66, 12);
+            Console.SetCursorPosition(66, 13);
             Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━━═༻");
 
             // 플레이어 인벤토리를 스캔해서
@@ -209,40 +209,26 @@ namespace SpartaDungeonGame
                 // 장착 중으로 표기된 장비가 있다면
                 if (player.inventories[i].isEquiped == true)
                 {
-                    Console.SetCursorPosition(80, inventoryIndex);
-                    Console.Write("|");
                     Console.SetCursorPosition(
-                        (18 - player.inventories[i].name.Length) / 2 + 62,
+                        74 - player.inventories[i].name.Length,
                         inventoryIndex
                     );
                     Console.Write(player.inventories[i].name);
 
+                    Console.SetCursorPosition(80, inventoryIndex);
+                    Console.Write("|");
+
                     // 특정 스탯을 올려주는지 확인
                     Console.SetCursorPosition(82, inventoryIndex);
-                    if (player.inventories[i].statPoint1 != 0)
+                    if (player.inventories[i].statPoint != 0)
                     {
                         Console.Write(
-                            " + {0} ({1}) ",
-                            player.inventories[i].statPoint1,
-                            player.inventories[i].statClass1.ToString()
+                            " (+ {0} {1}) ",
+                            player.inventories[i].statClass.ToString(),
+                            player.inventories[i].statPoint
                         );
                     }
-                    if (player.inventories[i].statPoint2 != 0)
-                    {
-                        Console.Write(
-                            " + {0} ({1}) ",
-                            player.inventories[i].statPoint2,
-                            player.inventories[i].statClass2.ToString()
-                        );
-                    }
-                    if (player.inventories[i].statPoint3 != 0)
-                    {
-                        Console.Write(
-                            " + {0} ({1}) ",
-                            player.inventories[i].statPoint3,
-                            player.inventories[i].statClass3.ToString()
-                        );
-                    }
+                    inventoryIndex++;
                 }
             }
         }
@@ -250,54 +236,65 @@ namespace SpartaDungeonGame
         // 장비 장착창 그리기
         public void DrawEquipWeaponPanel(Player player)
         {
+            int locationX = infoLongPanelWidth;
+            int locationCount = 0;
             int inventoryIndex = 3; // Inventory에서 SetCursorPosition Y좌표를 잡아줄 변수
 
-            Console.SetCursorPosition(infoLongPanelWidth + 4, 2);
-            Console.Write("༺═━━━━━━━━━━━━━━━━━━━ Equip Weapon ━━━━━━━━━━━━━━━━━━━━═༻");
-            Console.SetCursorPosition(infoLongPanelWidth + 4, 12);
+            Console.SetCursorPosition(locationX + 4, 2);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━ Equipment ━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(locationX + 4, 12);
             Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━═༻");
 
             for (int i = 0; i < player.inventories.Count; i++)
             {
-                Console.SetCursorPosition(infoLongPanelWidth + 3, inventoryIndex);
+                Console.SetCursorPosition(locationX + 3, inventoryIndex);
                 Console.Write("{0})", i + 1);
 
                 // 장착 중이라면 [E] 마크 달기
                 if (player.inventories[i].isEquiped == true)
                 {
-                    Console.SetCursorPosition(infoLongPanelWidth + 6, inventoryIndex);
+                    Console.SetCursorPosition(locationX + 6, inventoryIndex);
                     Console.Write("[E]");
                 }
+                else
+                {
+                    Console.SetCursorPosition(locationX + 6, inventoryIndex);
+                    Console.Write("[ ]");
+                }
+
                 // 장비 이름 적기
                 Console.SetCursorPosition(
-                    ((12 - player.inventories[i].name.Length) / 2) + infoLongPanelWidth + 7,
+                    ((12 - player.inventories[i].name.Length) / 2) + locationX + 7,
                     inventoryIndex
                 );
                 Console.Write(player.inventories[i].name);
-                Console.SetCursorPosition(54, inventoryIndex);
+                Console.SetCursorPosition(locationX + 20, inventoryIndex);
                 Console.Write("|");
 
                 // 장비 스탯 적기
-                if (player.inventories[i].statPoint1 != 0)
+                if (player.inventories[i].statPoint != 0)
                 {
-                    Console.SetCursorPosition(infoLongPanelWidth + 23, inventoryIndex);
+                    Console.SetCursorPosition(locationX + 22, inventoryIndex);
                     Console.Write(
                         "{0} (+{1})",
-                        player.inventories[i].statClass1,
-                        player.inventories[i].statPoint1
-                    );
-                }
-                if (player.inventories[i].statPoint2 != 0)
-                {
-                    Console.SetCursorPosition(infoLongPanelWidth + 23, inventoryIndex);
-                    Console.Write(
-                        "{0} (+{1})",
-                        player.inventories[i].statClass2,
-                        player.inventories[i].statPoint2
+                        player.inventories[i].statClass,
+                        player.inventories[i].statPoint
                     );
                 }
 
-                inventoryIndex++;
+                if (locationCount == 0)
+                {
+                    locationCount++;
+                    locationX += 31;
+                }
+                else if (locationCount == 1)
+                {
+                    locationCount--;
+                    locationX -= 31;
+                    Console.SetCursorPosition(locationX + 32, inventoryIndex);
+                    Console.Write("║");
+                    inventoryIndex++;
+                }
             }
         }
 
@@ -308,7 +305,7 @@ namespace SpartaDungeonGame
 
             Console.SetCursorPosition(infoLongPanelWidth + 4, 2);
             Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━ Inventory ━━━━━━━━━━━━━━━━━━━━━═༻");
-            Console.SetCursorPosition(infoLongPanelWidth + 4, 12);
+            Console.SetCursorPosition(infoLongPanelWidth + 4, 13);
             Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━═༻");
 
             for (int i = 0; i < player.inventories.Count; i++)
@@ -317,53 +314,113 @@ namespace SpartaDungeonGame
                 if (player.inventories[i].isEquiped == true)
                 {
                     Console.SetCursorPosition(infoLongPanelWidth + 2, inventoryIndex);
-                    Console.Write("[E]");
+                    Console.Write("[E] | ");
+                }
+                else
+                {
+                    Console.SetCursorPosition(infoLongPanelWidth + 6, inventoryIndex);
+                    Console.Write("|");
                 }
                 // 장비 이름 적기
-                Console.SetCursorPosition(
-                    ((12 - player.inventories[i].name.Length) / 2) + infoLongPanelWidth + 3,
-                    inventoryIndex
-                );
+                Console.SetCursorPosition(infoLongPanelWidth + 8, inventoryIndex);
                 Console.Write(player.inventories[i].name);
-                Console.SetCursorPosition(50, inventoryIndex);
+
+                Console.SetCursorPosition(57, inventoryIndex);
                 Console.Write("|");
 
                 // 장비 스탯 적기
-                if (player.inventories[i].statPoint1 != 0)
+                if (player.inventories[i].statPoint != 0)
                 {
-                    Console.SetCursorPosition(52, inventoryIndex);
-                    Console.Write(
-                        "{0} (+{1})",
-                        player.inventories[i].statClass1,
-                        player.inventories[i].statPoint1
-                    );
-                }
-                if (player.inventories[i].statPoint2 != 0)
-                {
-                    Console.SetCursorPosition(52, inventoryIndex);
-                    Console.Write(
-                        "{0} (+{1})",
-                        player.inventories[i].statClass2,
-                        player.inventories[i].statPoint2
-                    );
-                }
-                if (player.inventories[i].statPoint3 != 0)
-                {
-                    Console.SetCursorPosition(52, inventoryIndex);
-                    Console.Write(
-                        " {0} (+{1})",
-                        player.inventories[i].statClass3,
-                        player.inventories[i].statPoint3
-                    );
+                    string statPoint = "(+" + player.inventories[i].statPoint + ")";
+                    Console.SetCursorPosition(59, inventoryIndex);
+                    Console.Write(player.inventories[i].statClass);
+                    Console.SetCursorPosition(68 - statPoint.Length, inventoryIndex);
+                    Console.Write(statPoint);
                 }
 
-                Console.SetCursorPosition(61, inventoryIndex);
+                Console.SetCursorPosition(69, inventoryIndex);
                 Console.Write("|");
 
                 // 장비 설명 적기
-                Console.SetCursorPosition(63, inventoryIndex);
-                Console.Write(player.inventories[i].description);
+                if (player.inventories[i].description.Length > 14)
+                {
+                    Console.SetCursorPosition(39, inventoryIndex);
+                    Console.Write("|");
+                    Console.SetCursorPosition(71, inventoryIndex);
+                    Console.Write(player.inventories[i].description.Substring(0, 14));
+                    inventoryIndex++;
+                    Console.SetCursorPosition(39, inventoryIndex);
+                    Console.Write("|");
+                    Console.SetCursorPosition(57, inventoryIndex);
+                    Console.Write("|");
+                    Console.SetCursorPosition(69, inventoryIndex);
+                    Console.Write("|");
 
+                    Console.SetCursorPosition(71, inventoryIndex);
+                    Console.Write(player.inventories[i].description.Substring(14));
+                }
+                else
+                {
+                    Console.SetCursorPosition(71, inventoryIndex);
+                    Console.Write(player.inventories[i].description);
+                }
+
+                inventoryIndex++;
+            }
+        }
+
+        // 상점 창 그리기
+        public void DrawShopPanel(Player player, Shopper shopper)
+        {
+            string price;
+            int locationX = infoLongPanelWidth + 6;
+            int inventoryIndex = 3; // SetCursorPosition Y좌표를 잡아줄 변수
+
+            Console.SetCursorPosition(locationX - 2, 2);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━ Shop ━━━━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(locationX - 2, 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━═༻");
+
+            for (int i = 0; i < shopper.products.Count; i++)
+            {
+                Console.SetCursorPosition(locationX + 3, inventoryIndex);
+                Console.Write("{0})", i + 1);
+
+                // 장비 이름 적기
+                Console.SetCursorPosition(
+                    locationX + 15 - shopper.products[i].name.Length,
+                    inventoryIndex
+                );
+                Console.Write(shopper.products[i].name);
+                Console.SetCursorPosition(locationX + 24, inventoryIndex);
+                Console.Write("|");
+
+                // 장비 스탯 적기
+                if (shopper.products[i].statPoint != 0)
+                {
+                    string statPoint = "(+" + shopper.products[i].statPoint + ")";
+                    Console.SetCursorPosition(locationX + 27, inventoryIndex);
+                    Console.Write(shopper.products[i].statClass);
+                    Console.SetCursorPosition(locationX + 36 - statPoint.Length, inventoryIndex);
+                    Console.Write(statPoint);
+                }
+
+                Console.SetCursorPosition(locationX + 37, inventoryIndex);
+                Console.Write("|");
+
+                // 장비 가격 / 구매 여부 적기
+                if (shopper.products[i].isSold != true)
+                {
+                    price = shopper.products[i].price + " G";
+                    Console.SetCursorPosition(locationX + 49 - price.Length, inventoryIndex);
+                    Console.Write(price);
+                }
+                else
+                {
+                    price = "구매 완료";
+                    Console.SetCursorPosition(locationX + 45 - price.Length, inventoryIndex);
+                    Console.Write(price);
+                }
                 inventoryIndex++;
             }
         }
@@ -374,7 +431,10 @@ namespace SpartaDungeonGame
             string playerMainInfo = "Lv. " + player.level + "   " + player.job;
             int playerMainInfoLength = playerMainInfo.Length;
 
-            Console.SetCursorPosition((33 - playerMainInfoLength) / 2, canvasHeight - 5);
+            Console.SetCursorPosition(
+                (infoLongPanelWidth - playerMainInfoLength) / 2,
+                canvasHeight - 5
+            );
             Console.Write(playerMainInfo);
 
             Console.SetCursorPosition(5, 2);
@@ -384,7 +444,7 @@ namespace SpartaDungeonGame
 
             for (int i = 1; i < canvasHeight - 1; i++)
             {
-                Console.SetCursorPosition(33, i);
+                Console.SetCursorPosition(infoLongPanelWidth, i);
                 Console.Write("║");
             }
 
@@ -414,25 +474,78 @@ namespace SpartaDungeonGame
             Console.Write("    /  ﾐ`——彡  \\");
         }
 
-        // 마을 그리기
-        public void DrawTown(int posX, int posY)
+        // 상점 주인 이미지를 좌측 패널에 그리기
+        public void DrawShopperPanel()
         {
+            Console.SetCursorPosition(5, 2);
+            Console.Write("༺═━━━━ 상점 주인 ━━━━═༻");
+            Console.SetCursorPosition(5, canvasHeight - 3);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━═༻");
+
+            for (int i = 1; i < canvasHeight - 1; i++)
+            {
+                Console.SetCursorPosition(33, i);
+                Console.Write("║");
+            }
+
+            DrawShopper(7, 7);
+        }
+
+        // 상점 주인 그리기
+        void DrawShopper(int posX, int posY)
+        {
+            Console.SetCursorPosition(posX, posY);
+            Console.Write("   __[ 상  점 ]__");
+            Console.SetCursorPosition(posX, posY + 1);
+            Console.Write("  /＼＼＼＼＼＼＼＼");
             Console.SetCursorPosition(posX, posY + 2);
-            Console.Write("。° 。 ° ˛ ˚ ˛ ˚ ˛ ·˚");
+            Console.Write(" //┏＼＼＼＼＼＼＼＼");
             Console.SetCursorPosition(posX, posY + 3);
-            Console.Write("· 。 ° · 。 · ˚ ˚ ˛ ˚ ˛");
+            Console.Write("// 三 \\Lﾘﾘﾘﾘﾘﾘﾘﾘﾘﾘﾘﾘ｣");
             Console.SetCursorPosition(posX, posY + 4);
-            Console.Write("。° 。 ° 。˚ ˛ · ˚ ˚ ˛");
+            Console.Write("|{ﾆ영ﾆ}|　∧__∧　 　|");
             Console.SetCursorPosition(posX, posY + 5);
-            Console.Write(" ˛ ˚ ˛ ˚ 。 · ˚ ˚ ˛ ˚ ˛ · ·");
+            Console.Write("|{ﾆ업ﾆ}| (´･ω･)∬∬　|");
             Console.SetCursorPosition(posX, posY + 6);
-            Console.Write("。 ° · 。。* 。° 。 ° ˛ ˚ ˛");
+            Console.Write("|{ﾆ중ﾆ}| (つ┌───┐　|");
             Console.SetCursorPosition(posX, posY + 7);
-            Console.Write("* _Π_____*。*˚ ˚ ˛ ˚ ˛ ·˛ ·˚");
+            Console.Write("|| 三 |Γ￣￣￣￣￣￣|");
             Console.SetCursorPosition(posX, posY + 8);
-            Console.Write("*/______/~~\\。˚ ˚ ˛ ˚ ˛ ·˛ ·˚");
-            Console.SetCursorPosition(posX, posY + 9);
-            Console.Write("｜田 田｜門｜ ˚ ˛ ˚ ˛ ·");
+            Console.Write("||┗┛┗┛|　　　　　　 |");
+        }
+
+        // 마을 그리기
+        public void DrawTown()
+        {
+            for (int i = 1; i <= 11; i++)
+            {
+                for (int j = 1; j <= 97; j += 2)
+                {
+                    Console.SetCursorPosition(j, i);
+                    Console.Write("　");
+                }
+            }
+
+            Console.SetCursorPosition(2, 9);
+            Console.Write("  _Π_______");
+            Console.SetCursorPosition(2, 10);
+            Console.Write(" /______/~~\\");
+            Console.SetCursorPosition(2, 11);
+            Console.Write("｜田 田｜門｜");
+
+            Console.SetCursorPosition(15, 9);
+            Console.Write("  _Π_______");
+            Console.SetCursorPosition(15, 10);
+            Console.Write(" /______/~~\\");
+            Console.SetCursorPosition(15, 11);
+            Console.Write("｜田 田｜門｜");
+
+            Console.SetCursorPosition(49, 9);
+            Console.Write("  _Π_______");
+            Console.SetCursorPosition(49, 10);
+            Console.Write(" /______/~~\\");
+            Console.SetCursorPosition(49, 11);
+            Console.Write("｜田 田｜門｜");
         }
 
         // 드래곤 그리기

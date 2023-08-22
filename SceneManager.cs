@@ -11,6 +11,7 @@ namespace SpartaDungeonGame
         public Canvas canvas = new Canvas();
         public Message message = new Message();
         public Player player = new Player();
+        public Shopper shopper = new Shopper();
 
         // 타이틀 출력하는 메소드
         public void SetTitleScene()
@@ -26,7 +27,7 @@ namespace SpartaDungeonGame
         {
             canvas.DrawOutLine();
             canvas.DrawMessagePanel(1, canvas.canvasWidth - 1, canvas.canvasHeight - 8);
-            canvas.DrawTown(2, 2);
+            canvas.DrawTown();
 
             message.SetMessageInFirstStage();
         }
@@ -41,7 +42,7 @@ namespace SpartaDungeonGame
             canvas.DrawMessagePanel(
                 canvas.infoLongPanelWidth + 1,
                 canvas.canvasWidth - 2,
-                canvas.canvasHeight - 6
+                canvas.canvasHeight - 5
             );
 
             message.SetMessageInPlayerStatusPanel();
@@ -56,7 +57,7 @@ namespace SpartaDungeonGame
             canvas.DrawMessagePanel(
                 canvas.infoLongPanelWidth + 1,
                 canvas.canvasWidth - 2,
-                canvas.canvasHeight - 6
+                canvas.canvasHeight - 5
             );
 
             message.SetMessageInInventoryPanel();
@@ -67,37 +68,8 @@ namespace SpartaDungeonGame
         {
             int inventoryIndex;
 
-            canvas.DrawOutLine();
-            canvas.DrawPlayerPanel(player);
-            canvas.DrawEquipWeaponPanel(player);
-            canvas.DrawMessagePanel(
-                canvas.infoLongPanelWidth + 1,
-                canvas.canvasWidth - 2,
-                canvas.canvasHeight - 6
-            );
-            message.SetMessageInEquipWeaponPanel();
-
             do
             {
-                inventoryIndex = int.Parse(Console.ReadKey().KeyChar.ToString()) - 1;
-                Console.Write(inventoryIndex);
-
-                if (inventoryIndex > player.inventories.Count || inventoryIndex < 0)
-                {
-                    // Console.Write("Wrong!!!!!!");
-                }
-                else
-                {
-                    if (player.inventories[inventoryIndex].isEquiped == true)
-                    {
-                        player.inventories[inventoryIndex].isEquiped = false;
-                    }
-                    else
-                    {
-                        player.inventories[inventoryIndex].isEquiped = true;
-                    }
-                }
-
                 canvas.DrawOutLine();
                 canvas.DrawPlayerPanel(player);
                 canvas.DrawEquipWeaponPanel(player);
@@ -106,11 +78,90 @@ namespace SpartaDungeonGame
                     canvas.canvasWidth - 2,
                     canvas.canvasHeight - 6
                 );
+
                 message.SetMessageInEquipWeaponPanel();
-            } while (Console.ReadKey().Key == ConsoleKey.D0);
+
+                inventoryIndex = Console.ReadKey().KeyChar - 48;
+
+                Console.SetCursorPosition(38, canvas.canvasHeight - 3);
+
+                if (0 <= inventoryIndex && inventoryIndex <= player.inventories.Count)
+                {
+                    if (inventoryIndex != 0)
+                    {
+                        if (player.inventories[inventoryIndex - 1].isEquiped == true)
+                        {
+                            player.inventories[inventoryIndex - 1].isEquiped = false;
+                        }
+                        else
+                        {
+                            player.inventories[inventoryIndex - 1].isEquiped = true;
+                        }
+                    }
+                }
+                else
+                {
+                    message.SetErrorMessageInEquipWeaponPanel();
+                }
+            } while (inventoryIndex != 0);
         }
 
         // 상점을 출력하는 메소드
-        public void SetShop() { }
+        public void SetShopScene()
+        {
+            int productIndex;
+
+            do
+            {
+                canvas.DrawOutLine();
+                canvas.DrawShopperPanel();
+                canvas.DrawShopPanel(player, shopper);
+                canvas.DrawMessagePanel(
+                    canvas.infoLongPanelWidth + 1,
+                    canvas.canvasWidth - 2,
+                    canvas.canvasHeight - 6
+                );
+                message.SetMessageInShopPanel();
+
+                productIndex = Console.ReadKey().KeyChar - 48;
+
+                Console.SetCursorPosition(38, canvas.canvasHeight - 3);
+
+                if (0 <= productIndex && productIndex <= shopper.products.Count)
+                {
+                    if (productIndex != 0)
+                    {
+                        if (shopper.products[productIndex - 1].isSold == true)
+                        {
+                            message.SetErrorMessageInShopPanel();
+                        }
+                        else
+                        {
+                            if (shopper.products[productIndex - 1].price > player.gold) { }
+                            else
+                            {
+                                player.Purchase(shopper.products[productIndex - 1].price);
+
+                                shopper.products[productIndex - 1].isSold = true;
+
+                                player.inventories.Add(
+                                    new Inventory(
+                                        false,
+                                        shopper.products[productIndex - 1].name,
+                                        shopper.products[productIndex - 1].statClass,
+                                        shopper.products[productIndex - 1].statPoint,
+                                        shopper.products[productIndex - 1].description
+                                    )
+                                );
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    message.SetErrorMessageInEquipWeaponPanel();
+                }
+            } while (productIndex != 0);
+        }
     }
 }
