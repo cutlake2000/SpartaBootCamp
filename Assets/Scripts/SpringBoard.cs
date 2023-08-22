@@ -9,7 +9,7 @@ public class SpringBoard : MonoBehaviour
 
     void Start()
     {
-        springJumpPower = new Vector2(0f, Random.Range(100f, 120f));
+        springJumpPower = new Vector2(0f, Random.Range(70f, 90f));
         FillSpringBoard();
     }
 
