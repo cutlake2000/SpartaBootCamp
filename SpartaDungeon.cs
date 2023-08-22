@@ -51,6 +51,9 @@ namespace SpartaDungeonGame
                     case ConsoleKey.D3: // 상점
                         CallShopScene();
                         break;
+                    case ConsoleKey.D4: // 던전
+                        CallDungeonScene();
+                        break;
                     default:
                         CallMainScene();
                         break;
@@ -87,7 +90,10 @@ namespace SpartaDungeonGame
                 case ConsoleKey.D1: // 아이템 장착
                     CallEquipWeaponScene(status);
                     break;
-                case ConsoleKey.D2: // 나가기
+                case ConsoleKey.D2: // 아이템 정렬
+                    // CallSortInventoryScene(status);
+                    break;
+                case ConsoleKey.D3: // 나가기
                     if (status == SceneStatus.FromMain)
                         CallMainScene();
                     else if (status == SceneStatus.FromStatus)
@@ -98,6 +104,31 @@ namespace SpartaDungeonGame
                     break;
             }
         }
+
+        // 인벤토리 정렬
+        // void CallSortInventoryScene(SceneStatus status)
+        // {
+        // sceneManager.SetInventorySortScene(SceneManager.SortType.Default);
+
+        // switch (InputKey())
+        // {
+        //     case ConsoleKey.D1: // 이름 정렬
+        //         sceneManager.SetInventorySortScene(SceneManager.SortType.Name);
+        //         break;
+        //     case ConsoleKey.D2: // 장착 여부 정렬
+        //         sceneManager.SetInventorySortScene(SceneManager.SortType.isEquiped);
+        //         break;
+        //     case ConsoleKey.D3: // 공격력 정렬
+        //         sceneManager.SetInventorySortScene(SceneManager.SortType.ATK);
+        //         break;
+        //     case ConsoleKey.D4: // 방어력 정렬
+        //         sceneManager.SetInventorySortScene(SceneManager.SortType.DEF);
+        //         break;
+        //     case ConsoleKey.D0: // 나가기
+        //         CallInventoryScene(status);
+        //         break;
+        // }
+        // }
 
         // 장비 장착창 출력
         void CallEquipWeaponScene(SceneStatus status)
@@ -113,10 +144,18 @@ namespace SpartaDungeonGame
             sceneManager.SetShopScene();
         }
 
+        // 던전창 출력
+        void CallDungeonScene()
+        {
+            sceneManager.SetDungeonScene();
+            InputKey();
+        }
+
         enum SceneStatus
         {
             FromMain,
-            FromStatus
+            FromStatus,
+            FromInventory
         }
     }
 }

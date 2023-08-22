@@ -63,6 +63,21 @@ namespace SpartaDungeonGame
             message.SetMessageInInventoryPanel();
         }
 
+        // // 인벤토리 정렬을 출력하는 메소드
+        // public void SetInventorySortScene(SortType sortType)
+        // {
+        //     canvas.DrawOutLine();
+        //     canvas.DrawPlayerPanel(player);
+        //     canvas.DrawInventoryPanel(player, sortType);
+        //     canvas.DrawMessagePanel(
+        //         canvas.infoLongPanelWidth + 1,
+        //         canvas.canvasWidth - 2,
+        //         canvas.canvasHeight - 5
+        //     );
+
+        //     message.SetMessageInInventorySortPanel();
+        // }
+
         // 장비 장착씬을 출력하는 메소드
         public void SetEquipWeaponScene()
         {
@@ -92,10 +107,18 @@ namespace SpartaDungeonGame
                         if (player.inventories[inventoryIndex - 1].isEquiped == true)
                         {
                             player.inventories[inventoryIndex - 1].isEquiped = false;
+                            player.Unequip(
+                                player.inventories[inventoryIndex - 1].statClass,
+                                player.inventories[inventoryIndex - 1].statPoint
+                            );
                         }
                         else
                         {
                             player.inventories[inventoryIndex - 1].isEquiped = true;
+                            player.Equip(
+                                player.inventories[inventoryIndex - 1].statClass,
+                                player.inventories[inventoryIndex - 1].statPoint
+                            );
                         }
                     }
                 }
@@ -106,7 +129,7 @@ namespace SpartaDungeonGame
             } while (inventoryIndex != 0);
         }
 
-        // 상점을 출력하는 메소드
+        // 상점 씬을 출력하는 메소드
         public void SetShopScene()
         {
             int productIndex;
@@ -121,6 +144,7 @@ namespace SpartaDungeonGame
                     canvas.canvasWidth - 2,
                     canvas.canvasHeight - 6
                 );
+                message.SetGoldInShopPanel(player);
                 message.SetMessageInShopPanel();
 
                 productIndex = Console.ReadKey().KeyChar - 48;
@@ -134,12 +158,14 @@ namespace SpartaDungeonGame
                         if (shopper.products[productIndex - 1].isSold == true)
                         {
                             message.SetErrorMessageInShopPanel();
+                            Thread.Sleep(1000);
                         }
                         else
                         {
                             if (shopper.products[productIndex - 1].price > player.gold)
                             {
                                 message.SetErrorMessageLowMoneyInShopPanel();
+                                Thread.Sleep(1000);
                             }
                             else
                             {
@@ -165,6 +191,25 @@ namespace SpartaDungeonGame
                     message.SetErrorMessageInEquipWeaponPanel();
                 }
             } while (productIndex != 0);
+        }
+
+        // 던전 씬을 출력하는 메소드
+        public void SetDungeonScene()
+        {
+            canvas.DrawOutLine();
+            canvas.DrawCatPanel(2, 2);
+            canvas.DrawHamsterPanel(33, 2);
+            canvas.DrawDragonPanel(64, 2);
+        }
+
+        // 정렬 타입
+        public enum SortType
+        {
+            Default,
+            Name,
+            isEquiped,
+            ATK,
+            DEF
         }
     }
 }

@@ -58,5 +58,37 @@ namespace SpartaDungeonGame
         {
             this.gold -= price;
         }
+
+        public void Equip(Item.StatOption option, int statPoint)
+        {
+            if (option == Item.StatOption.ATK)
+            {
+                this.attack += statPoint;
+            }
+            else if (option == Item.StatOption.DEF)
+            {
+                this.defence += statPoint;
+            }
+            else if (option == Item.StatOption.HP)
+            {
+                this.health += statPoint;
+            }
+        }
+
+        public void Unequip(Item.StatOption option, int statPoint)
+        {
+            if (option == Item.StatOption.ATK)
+            {
+                this.attack -= statPoint;
+            }
+            else if (option == Item.StatOption.DEF)
+            {
+                this.defence -= statPoint;
+            }
+            else if (option == Item.StatOption.HP)
+            {
+                this.health -= statPoint;
+            }
+        }
     }
 }
