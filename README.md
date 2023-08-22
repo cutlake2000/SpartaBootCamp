@@ -11,9 +11,8 @@ C#을 활용해 만든 텍스트 RPG 게임입니다.
 
 
 ### ⚙️ 개발 환경 (필수 요구 사항)
-• 'C# - v1.26.0'
-• '.NET - 7.0'
-• Omnisharp
+• ```C# - v1.26.0```
+• ```.NET - 7.0```
 • Text Editor - Visual Studio Code
 ~~~
 
