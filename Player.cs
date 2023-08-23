@@ -46,11 +46,27 @@ namespace SpartaDungeonGame
         void InventoryInit()
         {
             inventories.Add(
-                new Inventory(false, "낡은 검", Item.StatOption.ATK, 2, "쉽게 볼 수 있는 낡은 검입니다.")
+                new Inventory(
+                    false,
+                    "낡은 검",
+                    Item.StatOption.ATK,
+                    2,
+                    Item.EquipmentType.Weapon,
+                    "쉽게 볼 수 있는 낡은 검입니다.",
+                    1800
+                )
             );
 
             inventories.Add(
-                new Inventory(true, "무쇠 갑옷", Item.StatOption.DEF, 5, "무쇠로 만들어져 튼튼한 갑옷입니다.")
+                new Inventory(
+                    true,
+                    "무쇠 갑옷",
+                    Item.StatOption.DEF,
+                    5,
+                    Item.EquipmentType.Armor,
+                    "무쇠로 만들어져 튼튼한 갑옷입니다.",
+                    600
+                )
             );
         }
 

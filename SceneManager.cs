@@ -115,6 +115,23 @@ namespace SpartaDungeonGame
                         }
                         else
                         {
+                            int isEquipedIndex = player.inventories.FindIndex(
+                                p =>
+                                    p.isEquiped.Equals(true)
+                                    && p.equipmentType.Equals(
+                                        player.inventories[inventoryIndex - 1].equipmentType
+                                    )
+                            );
+
+                            if (isEquipedIndex != -1)
+                            {
+                                player.inventories[isEquipedIndex].isEquiped = false;
+                                player.Unequip(
+                                    player.inventories[isEquipedIndex].statClass,
+                                    player.inventories[isEquipedIndex].statPoint
+                                );
+                            }
+
                             player.inventories[inventoryIndex - 1].isEquiped = true;
                             player.Equip(
                                 player.inventories[inventoryIndex - 1].statClass,
@@ -180,7 +197,9 @@ namespace SpartaDungeonGame
                                         shopper.products[productIndex - 1].name,
                                         shopper.products[productIndex - 1].statClass,
                                         shopper.products[productIndex - 1].statPoint,
-                                        shopper.products[productIndex - 1].description
+                                        shopper.products[productIndex - 1].equipmentType,
+                                        shopper.products[productIndex - 1].description,
+                                        shopper.products[productIndex - 1].price
                                     )
                                 );
                             }

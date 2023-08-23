@@ -153,6 +153,12 @@ namespace SpartaDungeonGame
             sceneManager.SetShopScene();
         }
 
+        // 아이템 구매창 출력()
+        void CallShopSellScene() { }
+
+        // 아이템 판매창 출력()
+        void CallShopBuyScene() { }
+
         // 던전창 출력
         void CallDungeonScene()
         {

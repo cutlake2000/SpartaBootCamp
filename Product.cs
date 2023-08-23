@@ -12,6 +12,7 @@ namespace SpartaDungeonGame
             string name,
             StatOption statClass,
             int statPoint,
+            EquipmentType equipmentType,
             string description,
             int price
         )
@@ -20,6 +21,7 @@ namespace SpartaDungeonGame
             this.name = name;
             this.statClass = statClass;
             this.statPoint = statPoint;
+            this.equipmentType = equipmentType;
             this.description = description;
             this.price = price;
         }
