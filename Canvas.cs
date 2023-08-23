@@ -249,34 +249,34 @@ namespace SpartaDungeonGame
 
             for (int i = 0; i < player.inventories.Count; i++)
             {
-                Console.SetCursorPosition(locationX + 3, inventoryIndex);
+                Console.SetCursorPosition(locationX + 4, inventoryIndex);
                 Console.Write("{0})", i + 1);
 
                 // 장착 중이라면 [E] 마크 달기
                 if (player.inventories[i].isEquiped == true)
                 {
-                    Console.SetCursorPosition(locationX + 6, inventoryIndex);
+                    Console.SetCursorPosition(locationX + 7, inventoryIndex);
                     Console.Write("[E]");
                 }
                 else
                 {
-                    Console.SetCursorPosition(locationX + 6, inventoryIndex);
+                    Console.SetCursorPosition(locationX + 7, inventoryIndex);
                     Console.Write("[ ]");
                 }
 
                 // 장비 이름 적기
                 Console.SetCursorPosition(
-                    ((12 - player.inventories[i].name.Length) / 2) + locationX + 7,
+                    ((14 - player.inventories[i].name.Length) / 2) + locationX + 7,
                     inventoryIndex
                 );
                 Console.Write(player.inventories[i].name);
-                Console.SetCursorPosition(locationX + 20, inventoryIndex);
+                Console.SetCursorPosition(locationX + 21, inventoryIndex);
                 Console.Write("|");
 
                 // 장비 스탯 적기
                 if (player.inventories[i].statPoint != 0)
                 {
-                    Console.SetCursorPosition(locationX + 22, inventoryIndex);
+                    Console.SetCursorPosition(locationX + 23, inventoryIndex);
                     Console.Write(
                         "{0} (+{1})",
                         player.inventories[i].statClass,

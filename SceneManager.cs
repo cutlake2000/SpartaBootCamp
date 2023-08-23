@@ -150,8 +150,6 @@ namespace SpartaDungeonGame
         // 상점 씬을 출력하는 메소드
         public void SetShopScene()
         {
-            int input = 0;
-
             canvas.DrawOutLine();
             canvas.DrawShopperPanel();
             canvas.DrawBuyShopPanel(player, shopper);
