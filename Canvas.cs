@@ -558,11 +558,17 @@ namespace SpartaDungeonGame
         public void DrawCatPanel(int posX, int posY)
         {
             Console.SetCursorPosition(posX + 4, posY);
-            Console.Write("༺═━━━━━━━━ Cat ━━━━━━━━━═༻");
+            Console.Write("༺═━━━━━━━━━ Cat ━━━━━━━━━═༻");
+            Console.SetCursorPosition(posX + 5, posY + 1);
+            Console.Write(" 1) 숙면을 취하는 고양이 ");
+            Console.SetCursorPosition(posX + 4, posY + 10);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(posX + 9, posY + 11);
+            Console.Write("방어력  5 이상 권장");
+            Console.SetCursorPosition(posX + 4, posY + 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━═༻");
 
-            DrawCat(posX + 9, posY + 5);
-            Console.SetCursorPosition(posX + 4, posY + 15);
-            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━═༻");
+            DrawCat(posX + 9, posY + 2);
         }
 
         // 던전 창 (햄스터) 그리기
@@ -570,23 +576,33 @@ namespace SpartaDungeonGame
         {
             Console.SetCursorPosition(posX + 4, posY);
             Console.Write("༺═━━━━━━━ Hamster ━━━━━━━═༻");
+            Console.SetCursorPosition(posX + 5, posY + 1);
+            Console.Write(" 2) 아무튼 귀여운 햄스터임 ");
+            Console.SetCursorPosition(posX + 4, posY + 10);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(posX + 9, posY + 11);
+            Console.Write("방어력 11 이상 권장");
+            Console.SetCursorPosition(posX + 4, posY + 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━═༻");
 
-            DrawHamster(posX + 6, posY + 5);
-
-            Console.SetCursorPosition(posX + 5, posY + 15);
-            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━═༻");
+            DrawHamster(posX + 6, posY + 3);
         }
 
         // 던전 창 (드래곤) 그리기
         public void DrawDragonPanel(int posX, int posY)
         {
+            DrawDragon(posX, posY - 1);
+
             Console.SetCursorPosition(posX + 4, posY);
             Console.Write("༺═━━━━━━━ Dragon ━━━━━━━═༻");
-
-            DrawDragon(posX, posY + 1);
-            Console.SetCursorPosition(posX + 4, posY + 14);
-            Console.SetCursorPosition(posX + 4, posY + 15);
-            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(posX + 5, posY + 1);
+            Console.Write(" 3) 초강력 초토화 드래곤 ");
+            Console.SetCursorPosition(posX + 4, posY + 10);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(posX + 9, posY + 11);
+            Console.Write("방어력 17 이상 권장");
+            Console.SetCursorPosition(posX + 4, posY + 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━═༻");
         }
 
         // 플레이어 이미지를 좌측 패널에 그리기
@@ -606,6 +622,15 @@ namespace SpartaDungeonGame
             Console.SetCursorPosition(5, canvasHeight - 3);
             Console.Write("༺═━━━━━━━━━━━━━━━━━━━═༻");
 
+            for (int i = 3; i < canvasHeight - 3; i++)
+            {
+                for (int j = 5; j < 28; j += 2)
+                {
+                    Console.SetCursorPosition(j, i);
+                    Console.Write("　");
+                }
+            }
+
             for (int i = 1; i < canvasHeight - 1; i++)
             {
                 Console.SetCursorPosition(infoLongPanelWidth, i);
@@ -618,24 +643,24 @@ namespace SpartaDungeonGame
         // 플레이어 그리기
         void DrawPlayer(int posX, int posY)
         {
-            Console.SetCursorPosition(posX, posY);
-            Console.Write("       (\\__/)     ");
-            Console.SetCursorPosition(posX, posY + 1);
-            Console.Write("       (•ㅅ•)  ");
-            Console.SetCursorPosition(posX, posY + 2);
-            Console.Write("   ＿ノヽ  ノ＼＿ ");
-            Console.SetCursorPosition(posX, posY + 3);
-            Console.Write(" /    Y ⌒Ｙ⌒ Ｙヽヽ");
+            Console.SetCursorPosition(posX + 7, posY);
+            Console.Write("(\\__/)");
+            Console.SetCursorPosition(posX + 7, posY + 1);
+            Console.Write("(•ㅅ•)");
+            Console.SetCursorPosition(posX + 3, posY + 2);
+            Console.Write("＿ノヽ  ノ＼＿");
+            Console.SetCursorPosition(posX + 1, posY + 3);
+            Console.Write("/    Y ⌒Ｙ⌒ Ｙヽヽ");
             Console.SetCursorPosition(posX, posY + 4);
             Console.Write("(   (三ヽ人  /    |");
             Console.SetCursorPosition(posX, posY + 5);
             Console.Write("|   ﾉ ¯¯\\ ￣￣ヽ ノ");
             Console.SetCursorPosition(posX, posY + 6);
             Console.Write("ヽ＿＿＿  ＞､＿_／");
-            Console.SetCursorPosition(posX, posY + 7);
-            Console.Write("    ｜ ( 王 ) 〈");
-            Console.SetCursorPosition(posX, posY + 8);
-            Console.Write("    /  ﾐ`——彡  \\");
+            Console.SetCursorPosition(posX + 4, posY + 7);
+            Console.Write("｜ ( 王 ) 〈");
+            Console.SetCursorPosition(posX + 4, posY + 8);
+            Console.Write("/  ﾐ`——彡  \\");
         }
 
         // 햄스터 그리기
@@ -662,6 +687,15 @@ namespace SpartaDungeonGame
             Console.Write("༺═━━━━ 상점 주인 ━━━━═༻");
             Console.SetCursorPosition(5, canvasHeight - 3);
             Console.Write("༺═━━━━━━━━━━━━━━━━━━━═༻");
+
+            for (int i = 3; i < canvasHeight - 3; i++)
+            {
+                for (int j = 5; j < 28; j += 2)
+                {
+                    Console.SetCursorPosition(j, i);
+                    Console.Write("　");
+                }
+            }
 
             for (int i = 1; i < canvasHeight - 1; i++)
             {
@@ -696,12 +730,12 @@ namespace SpartaDungeonGame
         // 상점 주인 그리기
         void DrawShopper(int posX, int posY)
         {
-            Console.SetCursorPosition(posX, posY);
-            Console.Write("   __[ 상  점 ]__");
-            Console.SetCursorPosition(posX, posY + 1);
-            Console.Write("  /＼＼＼＼＼＼＼＼");
-            Console.SetCursorPosition(posX, posY + 2);
-            Console.Write(" //┏＼＼＼＼＼＼＼＼");
+            Console.SetCursorPosition(posX + 3, posY);
+            Console.Write("__[ 상  점 ]__");
+            Console.SetCursorPosition(posX + 2, posY + 1);
+            Console.Write("/＼＼＼＼＼＼＼＼");
+            Console.SetCursorPosition(posX + 1, posY + 2);
+            Console.Write("//┏＼＼＼＼＼＼＼＼");
             Console.SetCursorPosition(posX, posY + 3);
             Console.Write("// 三 \\Lﾘﾘﾘﾘﾘﾘﾘﾘﾘﾘﾘﾘ｣");
             Console.SetCursorPosition(posX, posY + 4);
@@ -713,7 +747,7 @@ namespace SpartaDungeonGame
             Console.SetCursorPosition(posX, posY + 7);
             Console.Write("|| 三 |Γ￣￣￣￣￣￣|");
             Console.SetCursorPosition(posX, posY + 8);
-            Console.Write("||┗┛┗┛|　　　　　　 |");
+            Console.Write("||┗┛┗┛|-------------|");
         }
 
         // 마을 그리기

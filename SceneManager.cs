@@ -279,9 +279,10 @@ namespace SpartaDungeonGame
         public void SetDungeonScene()
         {
             canvas.DrawOutLine();
-            canvas.DrawCatPanel(2, 2);
-            canvas.DrawHamsterPanel(33, 2);
+            canvas.DrawCatPanel(1, 2);
             canvas.DrawDragonPanel(64, 2);
+            canvas.DrawHamsterPanel(33, 2);
+            canvas.DrawMessagePanel(1, canvas.canvasWidth - 1, canvas.canvasHeight - 5);
         }
     }
 }
