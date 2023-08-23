@@ -7,6 +7,8 @@ namespace SpartaDungeonGame
 {
     public class Canvas
     {
+        EnumType enumType = new EnumType();
+
         public int canvasWidth,
             canvasHeight,
             messagePanelHeight,
@@ -299,24 +301,87 @@ namespace SpartaDungeonGame
         }
 
         //인벤토리 창 그리기
-        public void DrawInventoryPanel(Player player)
+        public void DrawInventoryPanel(Player player, EnumType.SortType sortType)
         {
-            // if (sort == SortType.Name)
-            // {
-            //     player.inventories.OrderBy(p => p.name.Length);
-            // }
-            // else if (sort == SortType.isEquiped)
-            // {
-            //     player.inventories.OrderByDescending(p => p.isEquiped);
-            // }
-            // else if (sort == SortType.ATK)
-            // {
-            //     // player.inventories.OrderByDescending(p. => p.statClass);
-            // }
-            // else if (sort == SortType.DEF)
-            // {
-            //     // player.inventories.OrderByDescending(p => p.);
-            // }
+            int nameType = 0;
+            int isEquipedType = 0;
+            int ATKType = 0;
+            int DEFType = 0;
+
+            if (sortType == EnumType.SortType.Name)
+            {
+                if (nameType == 0)
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories.OrderBy(p => p.name.Length)
+                    );
+                    nameType++;
+                }
+                else
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories.OrderByDescending(p => p.name.Length)
+                    );
+                    nameType--;
+                }
+            }
+            else if (sortType == EnumType.SortType.isEquiped)
+            {
+                if (isEquipedType == 0)
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories.OrderByDescending(p => p.isEquiped)
+                    );
+                    isEquipedType++;
+                }
+                else
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories.OrderBy(p => p.isEquiped)
+                    );
+                    isEquipedType--;
+                }
+            }
+            else if (sortType == EnumType.SortType.ATK)
+            {
+                if (ATKType == 0)
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories.OrderBy(p => p.statClass).ThenBy(p => p.statPoint)
+                    );
+                    ATKType++;
+                }
+                else
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories
+                            .OrderBy(p => p.statClass)
+                            .ThenByDescending(p => p.statPoint)
+                    );
+                    ATKType--;
+                }
+            }
+            else if (sortType == EnumType.SortType.DEF)
+            {
+                if (DEFType == 0)
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories
+                            .OrderByDescending(p => p.statClass)
+                            .ThenBy(p => p.statPoint)
+                    );
+                    DEFType++;
+                }
+                else
+                {
+                    player.inventories = new List<Inventory>(
+                        player.inventories
+                            .OrderByDescending(p => p.statClass)
+                            .ThenByDescending(p => p.statPoint)
+                    );
+                    DEFType--;
+                }
+            }
             int inventoryIndex = 3; // Inventory에서 SetCursorPosition Y좌표를 잡아줄 변수
 
             Console.SetCursorPosition(infoLongPanelWidth + 4, 2);

@@ -43,7 +43,7 @@ namespace SpartaDungeonGame
         // 플레이어 상태창 메시지 출력
         public void SetMessageInPlayerStatusPanel()
         {
-            string playerStatusPanelSelectMessage = "1. 인벤토리        2. 나가기";
+            string playerStatusPanelSelectMessage = "1. 인벤토리        0. 나가기";
             Console.SetCursorPosition(
                 (57 - playerStatusPanelSelectMessage.Length) / 2 + 34,
                 canvas.canvasHeight - 3
@@ -54,7 +54,7 @@ namespace SpartaDungeonGame
         // 인벤토리창 메시지 출력
         public void SetMessageInInventoryPanel()
         {
-            string inventoryPanelSelectMessage = "1. 아이템 장착        2. 정렬하기        3. 나가기";
+            string inventoryPanelSelectMessage = "1. 아이템 장착        2. 정렬하기        0. 나가기";
 
             Console.SetCursorPosition(
                 (57 - inventoryPanelSelectMessage.Length) / 2 + 32,
@@ -66,11 +66,10 @@ namespace SpartaDungeonGame
         // 인벤토리 정렬 창 메시지 출력
         public void SetMessageInInventorySortPanel()
         {
-            string inventoryPanelSelectMessage =
-                "1. 이름        2. 장착여부        3. 공격력        4. 방어력        0. 나가기";
+            string inventoryPanelSelectMessage = "1. 이름    2. 장착여부    3. 공격력    4. 방어력    0. 나가기";
 
             Console.SetCursorPosition(
-                (57 - inventoryPanelSelectMessage.Length) / 2 + 32,
+                (57 - inventoryPanelSelectMessage.Length) / 2 + 31,
                 canvas.canvasHeight - 3
             );
             Console.Write(inventoryPanelSelectMessage);
@@ -105,7 +104,7 @@ namespace SpartaDungeonGame
             Console.SetCursorPosition(35, canvas.canvasHeight - 5);
             Console.Write("구매할 장비의 번호를 입력해주세요.");
             Console.SetCursorPosition(35, canvas.canvasHeight - 3);
-            Console.Write("[0] 상점 나가기");
+            Console.Write("0. 상점 나가기");
         }
 
         // 상점 창에서 보유 금액 출력
@@ -127,7 +126,7 @@ namespace SpartaDungeonGame
         public void SetErrorMessageLowMoneyInShopPanel()
         {
             Console.SetCursorPosition(35, canvas.canvasHeight - 3);
-            Console.Write("금액이 부족합니다.                           ");
+            Console.Write("금액이 부족합니다.           ");
         }
     }
 }

@@ -5,7 +5,7 @@ namespace SpartaDungeonGame
     public class SpartaDungeon
     {
         SceneManager sceneManager = new SceneManager();
-
+        EnumType enumType = new EnumType();
         ConsoleKey inputKey = ConsoleKey.Clear; // 플레이어 입력을 관리할 변수
         bool isGameEnd = false;
 
@@ -46,7 +46,7 @@ namespace SpartaDungeonGame
                         CallStatusScene();
                         break;
                     case ConsoleKey.D2: // 인벤토리
-                        CallInventoryScene(SceneStatus.FromMain);
+                        CallInventoryScene(EnumType.SceneType.FromMain);
                         break;
                     case ConsoleKey.D3: // 상점
                         CallShopScene();
@@ -69,9 +69,9 @@ namespace SpartaDungeonGame
             switch (InputKey())
             {
                 case ConsoleKey.D1: // 인벤토리
-                    CallInventoryScene(SceneStatus.FromStatus);
+                    CallInventoryScene(EnumType.SceneType.FromStatus);
                     break;
-                case ConsoleKey.D2: // 나가기
+                case ConsoleKey.D0: // 나가기
                     CallMainScene();
                     break;
                 default:
@@ -81,7 +81,7 @@ namespace SpartaDungeonGame
         }
 
         // 인벤토리 창 출력
-        void CallInventoryScene(SceneStatus status)
+        void CallInventoryScene(EnumType.SceneType status)
         {
             sceneManager.SetInventoryScene();
 
@@ -91,12 +91,12 @@ namespace SpartaDungeonGame
                     CallEquipWeaponScene(status);
                     break;
                 case ConsoleKey.D2: // 아이템 정렬
-                    // CallSortInventoryScene(status);
+                    CallInventorySortScene(status);
                     break;
-                case ConsoleKey.D3: // 나가기
-                    if (status == SceneStatus.FromMain)
+                case ConsoleKey.D0: // 나가기
+                    if (status == EnumType.SceneType.FromMain)
                         CallMainScene();
-                    else if (status == SceneStatus.FromStatus)
+                    else if (status == EnumType.SceneType.FromStatus)
                         CallStatusScene();
                     break;
                 default:
@@ -105,33 +105,42 @@ namespace SpartaDungeonGame
             }
         }
 
-        // 인벤토리 정렬
-        // void CallSortInventoryScene(SceneStatus status)
-        // {
-        // sceneManager.SetInventorySortScene(SceneManager.SortType.Default);
+        // 인벤토리 정렬창 출력
+        public void CallInventorySortScene(EnumType.SceneType status)
+        {
+            int sortIndex;
 
-        // switch (InputKey())
-        // {
-        //     case ConsoleKey.D1: // 이름 정렬
-        //         sceneManager.SetInventorySortScene(SceneManager.SortType.Name);
-        //         break;
-        //     case ConsoleKey.D2: // 장착 여부 정렬
-        //         sceneManager.SetInventorySortScene(SceneManager.SortType.isEquiped);
-        //         break;
-        //     case ConsoleKey.D3: // 공격력 정렬
-        //         sceneManager.SetInventorySortScene(SceneManager.SortType.ATK);
-        //         break;
-        //     case ConsoleKey.D4: // 방어력 정렬
-        //         sceneManager.SetInventorySortScene(SceneManager.SortType.DEF);
-        //         break;
-        //     case ConsoleKey.D0: // 나가기
-        //         CallInventoryScene(status);
-        //         break;
-        // }
-        // }
+            do
+            {
+                sceneManager.SetInventorySortScene(EnumType.SortType.Default);
+
+                sortIndex = Console.ReadKey().KeyChar - 48;
+
+                if (1 <= sortIndex && sortIndex <= 4)
+                {
+                    switch (sortIndex)
+                    {
+                        case 1: // 이름 정렬
+                            sceneManager.SetInventorySortScene(EnumType.SortType.Name);
+                            break;
+                        case 2: // 장착 여부 정렬
+                            sceneManager.SetInventorySortScene(EnumType.SortType.isEquiped);
+                            break;
+                        case 3: // 공격력 정렬
+                            sceneManager.SetInventorySortScene(EnumType.SortType.ATK);
+                            break;
+                        case 4: // 방어력 정렬
+                            sceneManager.SetInventorySortScene(EnumType.SortType.DEF);
+                            break;
+                    }
+                }
+            } while (sortIndex != 0);
+
+            CallInventoryScene(status);
+        }
 
         // 장비 장착창 출력
-        void CallEquipWeaponScene(SceneStatus status)
+        void CallEquipWeaponScene(EnumType.SceneType status)
         {
             sceneManager.SetEquipWeaponScene();
 
@@ -149,13 +158,6 @@ namespace SpartaDungeonGame
         {
             sceneManager.SetDungeonScene();
             InputKey();
-        }
-
-        enum SceneStatus
-        {
-            FromMain,
-            FromStatus,
-            FromInventory
         }
     }
 }

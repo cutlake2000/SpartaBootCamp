@@ -12,6 +12,7 @@ namespace SpartaDungeonGame
         public Message message = new Message();
         public Player player = new Player();
         public Shopper shopper = new Shopper();
+        public EnumType enumType = new EnumType();
 
         // 타이틀 출력하는 메소드
         public void SetTitleScene()
@@ -53,7 +54,7 @@ namespace SpartaDungeonGame
         {
             canvas.DrawOutLine();
             canvas.DrawPlayerPanel(player);
-            canvas.DrawInventoryPanel(player);
+            canvas.DrawInventoryPanel(player, EnumType.SortType.Default);
             canvas.DrawMessagePanel(
                 canvas.infoLongPanelWidth + 1,
                 canvas.canvasWidth - 2,
@@ -63,20 +64,20 @@ namespace SpartaDungeonGame
             message.SetMessageInInventoryPanel();
         }
 
-        // // 인벤토리 정렬을 출력하는 메소드
-        // public void SetInventorySortScene(SortType sortType)
-        // {
-        //     canvas.DrawOutLine();
-        //     canvas.DrawPlayerPanel(player);
-        //     canvas.DrawInventoryPanel(player, sortType);
-        //     canvas.DrawMessagePanel(
-        //         canvas.infoLongPanelWidth + 1,
-        //         canvas.canvasWidth - 2,
-        //         canvas.canvasHeight - 5
-        //     );
+        // 인벤토리 정렬을 출력하는 메소드
+        public void SetInventorySortScene(EnumType.SortType sortType)
+        {
+            canvas.DrawOutLine();
+            canvas.DrawPlayerPanel(player);
+            canvas.DrawInventoryPanel(player, sortType);
+            canvas.DrawMessagePanel(
+                canvas.infoLongPanelWidth + 1,
+                canvas.canvasWidth - 2,
+                canvas.canvasHeight - 5
+            );
 
-        //     message.SetMessageInInventorySortPanel();
-        // }
+            message.SetMessageInInventorySortPanel();
+        }
 
         // 장비 장착씬을 출력하는 메소드
         public void SetEquipWeaponScene()
@@ -200,16 +201,6 @@ namespace SpartaDungeonGame
             canvas.DrawCatPanel(2, 2);
             canvas.DrawHamsterPanel(33, 2);
             canvas.DrawDragonPanel(64, 2);
-        }
-
-        // 정렬 타입
-        public enum SortType
-        {
-            Default,
-            Name,
-            isEquiped,
-            ATK,
-            DEF
         }
     }
 }
