@@ -150,56 +150,72 @@ namespace SpartaDungeonGame
         // 상점 씬을 출력하는 메소드
         public void SetShopScene()
         {
-            int productIndex;
+            int input = 0;
+
+            canvas.DrawOutLine();
+            canvas.DrawShopperPanel();
+            canvas.DrawBuyShopPanel(player, shopper);
+            canvas.DrawMessagePanel(
+                canvas.infoLongPanelWidth + 1,
+                canvas.canvasWidth - 2,
+                canvas.canvasHeight - 6
+            );
+            message.SetMessageInShopPanel();
+        }
+
+        // 상점 구매 씬을 출력하는 메소드
+        public void SetBuyShopScene()
+        {
+            int input;
 
             do
             {
                 canvas.DrawOutLine();
                 canvas.DrawShopperPanel();
-                canvas.DrawShopPanel(player, shopper);
+                canvas.DrawBuyShopPanel(player, shopper);
                 canvas.DrawMessagePanel(
                     canvas.infoLongPanelWidth + 1,
                     canvas.canvasWidth - 2,
                     canvas.canvasHeight - 6
                 );
                 message.SetGoldInShopPanel(player);
-                message.SetMessageInShopPanel();
+                message.SetBuyMessageInShopPanel();
 
-                productIndex = Console.ReadKey().KeyChar - 48;
+                input = Console.ReadKey().KeyChar - 48;
 
                 Console.SetCursorPosition(38, canvas.canvasHeight - 3);
 
-                if (0 <= productIndex && productIndex <= shopper.products.Count)
+                if (0 <= input && input <= shopper.products.Count)
                 {
-                    if (productIndex != 0)
+                    if (input != 0)
                     {
-                        if (shopper.products[productIndex - 1].isSold == true)
+                        if (shopper.products[input - 1].isSold == true)
                         {
                             message.SetErrorMessageInShopPanel();
                             Thread.Sleep(1000);
                         }
                         else
                         {
-                            if (shopper.products[productIndex - 1].price > player.gold)
+                            if (shopper.products[input - 1].price > player.gold)
                             {
                                 message.SetErrorMessageLowMoneyInShopPanel();
                                 Thread.Sleep(1000);
                             }
                             else
                             {
-                                player.Purchase(shopper.products[productIndex - 1].price);
+                                player.Purchase(shopper.products[input - 1].price);
 
-                                shopper.products[productIndex - 1].isSold = true;
+                                shopper.products[input - 1].isSold = true;
 
                                 player.inventories.Add(
                                     new Inventory(
                                         false,
-                                        shopper.products[productIndex - 1].name,
-                                        shopper.products[productIndex - 1].statClass,
-                                        shopper.products[productIndex - 1].statPoint,
-                                        shopper.products[productIndex - 1].equipmentType,
-                                        shopper.products[productIndex - 1].description,
-                                        shopper.products[productIndex - 1].price
+                                        shopper.products[input - 1].name,
+                                        shopper.products[input - 1].statClass,
+                                        shopper.products[input - 1].statPoint,
+                                        shopper.products[input - 1].equipmentType,
+                                        shopper.products[input - 1].description,
+                                        shopper.products[input - 1].price
                                     )
                                 );
                             }
@@ -210,7 +226,55 @@ namespace SpartaDungeonGame
                 {
                     message.SetErrorMessageInEquipWeaponPanel();
                 }
-            } while (productIndex != 0);
+            } while (input != 0);
+        }
+
+        // 상점 판매 씬을 출력하는 메소드
+        public void SetSellShopScene()
+        {
+            int input;
+
+            do
+            {
+                canvas.DrawOutLine();
+                canvas.DrawShopperPanel();
+                canvas.DrawSellShopPanel(player, shopper);
+                canvas.DrawMessagePanel(
+                    canvas.infoLongPanelWidth + 1,
+                    canvas.canvasWidth - 2,
+                    canvas.canvasHeight - 6
+                );
+                message.SetGoldInShopPanel(player);
+                message.SetSellMessageInShopPanel();
+
+                input = Console.ReadKey().KeyChar - 48;
+
+                Console.SetCursorPosition(38, canvas.canvasHeight - 3);
+
+                if (0 <= input && input <= player.inventories.Count)
+                {
+                    if (input != 0)
+                    {
+                        player.Sell(((int)(player.inventories[input - 1].price * 0.85)));
+                        shopper.products.Add(
+                            new Product(
+                                false,
+                                player.inventories[input - 1].name,
+                                player.inventories[input - 1].statClass,
+                                player.inventories[input - 1].statPoint,
+                                player.inventories[input - 1].equipmentType,
+                                player.inventories[input - 1].description,
+                                player.inventories[input - 1].price
+                            )
+                        );
+                        player.inventories.Remove(player.inventories[input - 1]);
+                    }
+                }
+                else
+                {
+                    message.SetErrorMessageInEquipWeaponPanel();
+                }
+            } while (input != 0);
         }
 
         // 던전 씬을 출력하는 메소드

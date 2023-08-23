@@ -23,6 +23,7 @@ namespace SpartaDungeonGame
             this.statPoint = statPoint;
             this.equipmentType = equipmentType;
             this.description = description;
+            this.price = price;
         }
     }
 }

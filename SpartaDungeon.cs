@@ -108,17 +108,17 @@ namespace SpartaDungeonGame
         // 인벤토리 정렬창 출력
         public void CallInventorySortScene(EnumType.SceneType status)
         {
-            int sortIndex;
+            int index;
 
             do
             {
                 sceneManager.SetInventorySortScene(EnumType.SortType.Default);
 
-                sortIndex = Console.ReadKey().KeyChar - 48;
+                index = Console.ReadKey().KeyChar - 48;
 
-                if (1 <= sortIndex && sortIndex <= 4)
+                if (1 <= index && index <= 4)
                 {
-                    switch (sortIndex)
+                    switch (index)
                     {
                         case 1: // 이름 정렬
                             sceneManager.SetInventorySortScene(EnumType.SortType.Name);
@@ -134,7 +134,7 @@ namespace SpartaDungeonGame
                             break;
                     }
                 }
-            } while (sortIndex != 0);
+            } while (index != 0);
 
             CallInventoryScene(status);
         }
@@ -151,13 +151,22 @@ namespace SpartaDungeonGame
         void CallShopScene()
         {
             sceneManager.SetShopScene();
+
+            switch (InputKey())
+            {
+                case ConsoleKey.D1: // 아이템 구매
+                    sceneManager.SetBuyShopScene();
+                    CallShopScene();
+                    break;
+                case ConsoleKey.D2: // 아이템 판매
+                    sceneManager.SetSellShopScene();
+                    CallShopScene();
+                    break;
+                case ConsoleKey.D0:
+                    CallMainScene();
+                    break;
+            }
         }
-
-        // 아이템 구매창 출력()
-        void CallShopSellScene() { }
-
-        // 아이템 판매창 출력()
-        void CallShopBuyScene() { }
 
         // 던전창 출력
         void CallDungeonScene()

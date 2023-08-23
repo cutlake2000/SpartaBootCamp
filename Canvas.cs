@@ -450,8 +450,56 @@ namespace SpartaDungeonGame
             }
         }
 
-        // 상점 창 그리기
-        public void DrawShopPanel(Player player, Shopper shopper)
+        // 상점 판매 창 그리기
+        public void DrawSellShopPanel(Player player, Shopper shopper)
+        {
+            string price;
+            int locationX = infoLongPanelWidth + 6;
+            int inventoryIndex = 3; // SetCursorPosition Y좌표를 잡아줄 변수
+
+            Console.SetCursorPosition(locationX - 2, 2);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━ Inventory ━━━━━━━━━━━━━━━━━━━━━═༻");
+            Console.SetCursorPosition(locationX - 2, 12);
+            Console.Write("༺═━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━═༻");
+
+            for (int i = 0; i < player.inventories.Count; i++)
+            {
+                Console.SetCursorPosition(locationX + 3, inventoryIndex);
+                Console.Write("{0})", i + 1);
+
+                // 장비 이름 적기
+                Console.SetCursorPosition(
+                    locationX + 15 - player.inventories[i].name.Length,
+                    inventoryIndex
+                );
+                Console.Write(player.inventories[i].name);
+                Console.SetCursorPosition(locationX + 24, inventoryIndex);
+                Console.Write("|");
+
+                // 장비 스탯 적기
+                if (player.inventories[i].statPoint != 0)
+                {
+                    string statPoint = "(+" + player.inventories[i].statPoint + ")";
+                    Console.SetCursorPosition(locationX + 27, inventoryIndex);
+                    Console.Write(player.inventories[i].statClass);
+                    Console.SetCursorPosition(locationX + 36 - statPoint.Length, inventoryIndex);
+                    Console.Write(statPoint);
+                }
+
+                Console.SetCursorPosition(locationX + 37, inventoryIndex);
+                Console.Write("|");
+
+                // 판매 가격 적기
+                price = player.inventories[i].price + " G";
+                Console.SetCursorPosition(locationX + 49 - price.Length, inventoryIndex);
+                Console.Write(price);
+
+                inventoryIndex++;
+            }
+        }
+
+        // 상점 구매 창 그리기
+        public void DrawBuyShopPanel(Player player, Shopper shopper)
         {
             string price;
             int locationX = infoLongPanelWidth + 6;

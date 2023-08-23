@@ -101,10 +101,26 @@ namespace SpartaDungeonGame
         // 상점 창 메시지 출력
         public void SetMessageInShopPanel()
         {
+            Console.SetCursorPosition(43, canvas.canvasHeight - 4);
+            Console.Write("1. 구매하기        2. 판매하기        0. 나가기");
+        }
+
+        // 상점 창 구매 메시지 출력
+        public void SetBuyMessageInShopPanel()
+        {
             Console.SetCursorPosition(35, canvas.canvasHeight - 5);
             Console.Write("구매할 장비의 번호를 입력해주세요.");
             Console.SetCursorPosition(35, canvas.canvasHeight - 3);
             Console.Write("0. 상점 나가기");
+        }
+
+        // 상점 창 판매 메시지 출력
+        public void SetSellMessageInShopPanel()
+        {
+            Console.SetCursorPosition(35, canvas.canvasHeight - 5);
+            Console.Write("판매할 장비의 번호를 입력해주세요.");
+            Console.SetCursorPosition(35, canvas.canvasHeight - 3);
+            Console.Write("0. 상점으로 돌아가기");
         }
 
         // 상점 창에서 보유 금액 출력

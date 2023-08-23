@@ -53,7 +53,7 @@ namespace SpartaDungeonGame
                     2,
                     Item.EquipmentType.Weapon,
                     "쉽게 볼 수 있는 낡은 검입니다.",
-                    1800
+                    600
                 )
             );
 
@@ -65,7 +65,7 @@ namespace SpartaDungeonGame
                     5,
                     Item.EquipmentType.Armor,
                     "무쇠로 만들어져 튼튼한 갑옷입니다.",
-                    600
+                    1800
                 )
             );
         }
@@ -73,6 +73,11 @@ namespace SpartaDungeonGame
         public void Purchase(int price)
         {
             this.gold -= price;
+        }
+
+        public void Sell(int price)
+        {
+            this.gold += price;
         }
 
         public void Equip(Item.StatOption option, int statPoint)
