@@ -1,0 +1,14 @@
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/bin/Debug/netcoreapp3.1/BlackJack.deps.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/bin/Debug/netcoreapp3.1/BlackJack.runtimeconfig.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/bin/Debug/netcoreapp3.1/BlackJack.runtimeconfig.dev.json
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/bin/Debug/netcoreapp3.1/BlackJack.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/bin/Debug/netcoreapp3.1/BlackJack.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.csproj.AssemblyReference.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.GeneratedMSBuildEditorConfig.editorconfig
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.AssemblyInfoInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.AssemblyInfo.cs
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.csproj.CoreCompileInputs.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.dll
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.pdb
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/obj/Debug/netcoreapp3.1/BlackJack.genruntimeconfig.cache
+/Users/penguinkim/DobbyIsFree/Sparta/C#/BlackJack/bin/Debug/netcoreapp3.1/BlackJack
