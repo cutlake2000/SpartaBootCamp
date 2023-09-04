@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "0b5wLo+HoseIPiGCxJwBL50Cieue212M4v7luVfssvXGTo1cmHK4VVi6Ul/CX6/ose35ta74CJkHhPeb9Cfb1Q==",
+  "success": true,
+  "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/TikTacToe/TikTacToe.csproj",
+  "expectedPackageFiles": [
+    "/Users/penguinkim/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"
+  ],
+  "logs": []
+}
