@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rFQYg7qhVi6XLp1T9kU43f/7LsLXOxKOcVVv4ShAaDXtcZ8zvFoo50ajGwKoyIxZ4Smft4HcGrh+Uu3g7LKe2w==",
+  "success": true,
+  "projectFilePath": "/Users/penguinkim/DobbyIsFree/Sparta/C#/Snake/Snake.csproj",
+  "expectedPackageFiles": [
+    "/Users/penguinkim/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.32/microsoft.netcore.app.host.osx-x64.3.1.32.nupkg.sha512"
+  ],
+  "logs": []
+}
