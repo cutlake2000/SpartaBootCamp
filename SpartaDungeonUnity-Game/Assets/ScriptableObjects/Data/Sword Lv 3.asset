@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ca523099bcb4bb4aeda57395dfa426, type: 3}
+  m_Name: Sword Lv 3
+  m_EditorClassIdentifier: 
+  itemName: "\uAC803"
+  itemDescription: "\uAC803\uC785\uB2C8\uB2E4"
+  type: 0
+  icon: {fileID: 1202680877, guid: 01cba3c042e944ce4a9a2fefe4525da6, type: 3}
+  isEquip: 0
+  equipables: []
